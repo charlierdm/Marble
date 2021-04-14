@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, TextInput } from 'react-native';
+import { KeyboardAvoidingView, Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import AddButton from './components/Button';
 import MarbleInput from './components/MarbleInput'
 
@@ -12,6 +12,9 @@ export default class App extends React.Component {
   }
   render() {
     return (
+      <KeyboardAvoidingView
+      style={styles.container}
+      behavior="height">
       <View style={styles.container}>
         <Text style={styles.title}>Marble</Text>
         <Image style={styles.jar} source={require('./assets/jar.gif')}/>
@@ -19,6 +22,7 @@ export default class App extends React.Component {
         <MarbleInput />
         <AddButton/>
       </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -26,7 +30,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     backgroundColor: '#e6fffa',
   },
   title: {
