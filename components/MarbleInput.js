@@ -38,7 +38,6 @@ export default class MarbleInput extends React.Component {
         placeholder="How did you reduce consumerism?"
         value={activity}
         onChangeText={this.handleChangeActivity}
-
       />
       <TextInput
         style={styles.valueInput}

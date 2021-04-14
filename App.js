@@ -1,20 +1,40 @@
 import React from 'react';
-import { KeyboardAvoidingView, Image, StyleSheet, Text, View, TextInput } from 'react-native';
+import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import MarbleInput from './components/MarbleInput'
+import Marble from './components/Marble'
+
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       jarValue: 0,
-      activity: ''
+      activity: '',
+      marbles: []
     }
   }
+  getCurrentDate = () => {
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1;
+    var year = new Date().getFullYear();
+
+    //Alert.alert(date + '-' + month + '-' + year);
+    // You can turn it in to your desired format
+    return date + '/' + month + '/' + year;
+  }
   handleAddMarble = (activity, cost) => {
-    this.setState({jarValue: this.state.jarValue + parseInt(cost)})
+    const costInt = parseInt(cost);
+    const date = this.getCurrentDate();
+    this.setState({jarValue: this.state.jarValue + costInt})
     this.setState({activity: activity});
+    this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
+    console.log(this.state.marbles)
+  }
+  renderMarble = ( { item } ) => {
+    <Marble activity={item.activity} cost={item.cost}/>
   }
   render() {
+    const { marbles } = this.state;
     return (
       <KeyboardAvoidingView
       style={styles.container}
@@ -24,6 +44,16 @@ export default class App extends React.Component {
         <Image style={styles.jar} source={require('./assets/jar.gif')}/>
         <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
         <MarbleInput onSubmit={this.handleAddMarble}/>
+        <Text style={styles.recentMarblesHeading}>Recent Marbles</Text>
+        
+        <FlatList
+        data={marbles}
+        renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
+        keyExtractor={(item, index) => {
+          return  index.toString();
+         }}
+        />
+
       </View>
       </KeyboardAvoidingView>
     );
@@ -49,5 +79,10 @@ const styles = StyleSheet.create({
   jarValue: {
     marginTop: 260,
     textAlign: 'center'
+  },
+  recentMarblesHeading: {
+    fontSize: 20,
+    marginLeft: 10,
+    marginTop: 10,
   }
 });
