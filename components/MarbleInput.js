@@ -6,7 +6,7 @@ export default class MarbleInput extends React.Component {
     super(props);
     this.state = {
       activity: '',
-      cost: 0,
+      cost: '',
     }
   }
   handleChangeActivity = text => {
@@ -24,7 +24,7 @@ export default class MarbleInput extends React.Component {
 
     onSubmit(activity, cost);
     this.setState({activity: ''});
-    this.setState({cost: 0});
+    this.setState({cost: ''});
   }
   render() {
     const { activity } = this.state;
@@ -48,12 +48,13 @@ export default class MarbleInput extends React.Component {
         placeholder="How much would it have cost?"
         value={cost.toString()}
         onChangeText={this.handleChangeCost}
+        clearTextOnFocus={true}
         />
-        <TouchableOpacity 
-      style={styles.button}
-      onPress={this.handleSubmit}
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={this.handleSubmit}
       >
-        <Text style={styles.text}>Add Marble</Text>
+     <Text style={styles.text}>Add Marble</Text>
       </TouchableOpacity>
       </View>
     )
