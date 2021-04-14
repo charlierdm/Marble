@@ -1,14 +1,18 @@
 import React from 'react';
 import { KeyboardAvoidingView, Image, StyleSheet, Text, View, TextInput } from 'react-native';
-import AddButton from './components/Button';
 import MarbleInput from './components/MarbleInput'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      jarValue: 0
+      jarValue: 0,
+      activity: ''
     }
+  }
+  handleAddMarble = (activity, cost) => {
+    this.setState({jarValue: this.state.jarValue + parseInt(cost)})
+    this.setState({activity: activity});
   }
   render() {
     return (
@@ -19,8 +23,7 @@ export default class App extends React.Component {
         <Text style={styles.title}>Marble</Text>
         <Image style={styles.jar} source={require('./assets/jar.gif')}/>
         <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
-        <MarbleInput />
-        <AddButton/>
+        <MarbleInput onSubmit={this.handleAddMarble}/>
       </View>
       </KeyboardAvoidingView>
     );
