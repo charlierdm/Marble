@@ -12,7 +12,15 @@ export default class Marble extends React.Component {
     const cost = (Math.round(this.props.cost * 100) / 100).toFixed(2)
     return (
       <View style={styles.container}>
-      <Text>{this.props.date}                           {this.props.activity}                            £ {cost}</Text>
+        <View style={styles.textView}>
+      <Text style={styles.text}>{this.props.date}</Text>
+      </View>
+      <View style={styles.textView}>
+      <Text style={styles.activity}>{this.props.activity}</Text>
+      </View>
+      <View style={styles.textView}>
+      <Text style={styles.text}>£ {cost}</Text>
+      </View>
     </View>
     )
   }
@@ -21,6 +29,16 @@ export default class Marble extends React.Component {
 const styles = StyleSheet.create({
   container: { 
     marginTop: 5,
-    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  text: {
+    textAlign: 'left',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  activity: {
+    textTransform: 'capitalize'
   }
 })

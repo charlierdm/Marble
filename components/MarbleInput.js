@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class MarbleInput extends React.Component {
   constructor(props) {
@@ -25,6 +25,7 @@ export default class MarbleInput extends React.Component {
     onSubmit(activity, cost);
     this.setState({activity: ''});
     this.setState({cost: ''});
+    Keyboard.dismiss();
   }
   render() {
     const { activity } = this.state;

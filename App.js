@@ -3,7 +3,6 @@ import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, TextInpu
 import MarbleInput from './components/MarbleInput'
 import Marble from './components/Marble'
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,13 +27,14 @@ export default class App extends React.Component {
     this.setState({jarValue: this.state.jarValue + costInt})
     this.setState({activity: activity});
     this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
-    console.log(this.state.marbles)
   }
   renderMarble = ( { item } ) => {
     <Marble activity={item.activity} cost={item.cost}/>
   }
   render() {
     const { marbles } = this.state;
+    let recentHeading = ""
+    marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = ""
     return (
       <KeyboardAvoidingView
       style={styles.container}
@@ -44,7 +44,7 @@ export default class App extends React.Component {
         <Image style={styles.jar} source={require('./assets/jar.gif')}/>
         <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
         <MarbleInput onSubmit={this.handleAddMarble}/>
-        <Text style={styles.recentMarblesHeading}>Recent Marbles</Text>
+        <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
         
         <FlatList
         data={marbles}
