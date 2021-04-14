@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import AddButton from './components/Button';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Marble</Text>
       <Image style={styles.jar} source={require('./assets/jar.gif')}/>
+      <AddButton/>
       <StatusBar style="auto" />
     </View>
   );
