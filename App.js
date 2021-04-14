@@ -1,17 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import AddButton from './components/Button';
+import MarbleInput from './components/MarbleInput'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Marble</Text>
-      <Image style={styles.jar} source={require('./assets/jar.gif')}/>
-      <AddButton/>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      jarValue: 0
+    }
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Marble</Text>
+        <Image style={styles.jar} source={require('./assets/jar.gif')}/>
+        <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
+        <MarbleInput />
+        <AddButton/>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -30,5 +39,9 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 180,
     position: 'absolute', top: -100,
+  },
+  jarValue: {
+    marginTop: 260,
+    textAlign: 'center'
   }
 });
