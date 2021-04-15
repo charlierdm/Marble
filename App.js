@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, TextInput } from 'react-native';
+import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View } from 'react-native';
 import MarbleInput from './components/MarbleInput'
 import Marble from './components/Marble'
 
@@ -17,8 +17,6 @@ export default class App extends React.Component {
     var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
 
-    //Alert.alert(date + '-' + month + '-' + year);
-    // You can turn it in to your desired format
     return date + '/' + month + '/' + year;
   }
   handleAddMarble = (activity, cost) => {

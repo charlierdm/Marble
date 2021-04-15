@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, List, ListItem, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default class Marble extends React.Component {
   constructor(props) {
