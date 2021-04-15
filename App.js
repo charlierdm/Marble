@@ -16,7 +16,7 @@ export default class App extends React.Component {
     var date = new Date().getDate();
     var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
-
+    //return date in the desired format
     return date + '/' + month + '/' + year;
   }
   handleAddMarble = (activity, cost) => {
@@ -25,12 +25,14 @@ export default class App extends React.Component {
     this.setState({jarValue: this.state.jarValue + costInt})
     this.setState({activity: activity});
     this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
+    // save latest marble in the marbles array
   }
   render() {
     const { marbles } = this.state;
     let recentHeading = ""
-    marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = ""
+    marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = "" //render heading depends on marbles count
     return (
+      // adjust keyboard height to not obstruct app's view
       <KeyboardAvoidingView
       style={styles.container}
       behavior="height">
@@ -38,9 +40,10 @@ export default class App extends React.Component {
         <Text style={styles.title}>Marble</Text>
         <Image style={styles.jar} source={require('./assets/jar.gif')}/>
         <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
-        <MarbleInput onSubmit={this.handleAddMarble}/>
+        <MarbleInput onSubmit={this.handleAddMarble}/> // add marble when submit (link to marbleinput component)
         <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
         
+        //render each marble item in a list
         <FlatList
         data={marbles}
         renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
