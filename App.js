@@ -32,7 +32,6 @@ export default class App extends React.Component {
     let recentHeading = ""
     marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = "" //render heading depends on marbles count
     return (
-      // adjust keyboard height to not obstruct app's view
       <KeyboardAvoidingView
       style={styles.container}
       behavior="height">
@@ -40,10 +39,9 @@ export default class App extends React.Component {
         <Text style={styles.title}>Marble</Text>
         <Image style={styles.jar} source={require('./assets/jar.gif')}/>
         <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
-        <MarbleInput onSubmit={this.handleAddMarble}/> // add marble when submit (link to marbleinput component)
+        <MarbleInput onSubmit={this.handleAddMarble}/>
         <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
         
-        //render each marble item in a list
         <FlatList
         data={marbles}
         renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
