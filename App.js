@@ -28,9 +28,6 @@ export default class App extends React.Component {
     this.setState({activity: activity});
     this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
   }
-  renderMarble = ( { item } ) => {
-    <Marble activity={item.activity} cost={item.cost}/>
-  }
   render() {
     const { marbles } = this.state;
     let recentHeading = ""
