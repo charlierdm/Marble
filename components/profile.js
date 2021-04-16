@@ -33,7 +33,7 @@ export default class Profile extends Component {
     style={styles.container}
     behavior="height">
     <View style={styles.container}>
-      <Image style={styles.profilePic} source={user.photoURL}/>
+      <Image style={styles.profilePic} source={{uri: user.photoURL}}/>
       <Text style={styles.text}>{user.displayName}</Text>
       <Text style={styles.text}>{user.email}</Text>
 

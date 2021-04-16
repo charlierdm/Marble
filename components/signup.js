@@ -37,7 +37,7 @@ export default class Signup extends Component {
       .then((res) => {
         res.user.updateProfile({
           displayName: this.state.displayName,
-          photoURL: "../assets/blank_male_head.jpg"
+          photoURL: "https://www.aperio-intelligence.com/wp-content/themes/aperio/img/blank-avatar.png"
         })
         console.log('User registered successfully!')
         this.setState({
