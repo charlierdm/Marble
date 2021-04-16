@@ -7,6 +7,7 @@ import Marble from './components/Marble'
 import Login from './components/login';
 import Signup from './components/signup';
 import Dashboard from './components/dashboard'
+import Profile from './components/profile';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,14 @@ function MyStack() {
        component={Dashboard}
        options={
          { title: 'Dashboard' },
+         {headerLeft: null}
+       }
+      />
+      <Stack.Screen
+       name="Profile"
+       component={Profile}
+       options={
+         { title: 'Profile' },
          {headerLeft: null}
        }
       />

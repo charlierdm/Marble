@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
+import Profile from './profile';
 import firebase from '../database/firebase';
 
 export default class Dashboard extends Component {
@@ -11,6 +12,10 @@ export default class Dashboard extends Component {
       this.props.navigation.navigate('Login')
     })
     .catch(error => this.setState({ errorMessage: error.message }))
+  }
+
+  profilePage = () => {
+      this.props.navigation.navigate('Profile')
   }
 
 constructor(props) {
@@ -65,6 +70,12 @@ render() {
           title="Logout"
           onPress={() => this.signOut()}
         />
+        <Button
+            color="#3740FE"
+            title="Profile"
+            onPress={() => this.profilePage()}
+          />
+
 
     </View>
     </KeyboardAvoidingView>
