@@ -15,12 +15,32 @@ export default class Dashboard extends Component {
 
 constructor(props) {
   super(props);
+  this.dbRef = firebase.firestore().collection('marbles');
   this.state = {
     jarValue: 0,
     activity: '',
     marbles: [],
-    uid: ''
+    uid: '',
+    isLoading: false, 
+    email: '',
   }
+}
+componentDidMount() {
+  const user = firebase.auth().currentUser
+  const dbRef = this.dbRef.doc(user.email)
+  dbRef.get().then((res) => {
+    if (res.exists) {
+      const marbles = res.data();
+      this.setState({
+        jarValue: marbles.marbleValue,
+        marbles: marbles.marbles,
+        email: user.email,
+        isLoading: false
+      });
+    } else {
+      console.log("Document does not exist!");
+    }
+  });
 }
 getCurrentDate = () => {
   var date = new Date().getDate();
@@ -34,8 +54,26 @@ handleAddMarble = (activity, cost) => {
   const date = this.getCurrentDate();
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
-  this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
-  // save latest marble in the marbles array
+  this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
+    this.storeMarble();
+  })
+  this.updateMarble();
+}
+storeMarble() {
+  const user = firebase.auth().currentUser
+  this.setState({isLoading: true,});
+  this.dbRef.doc(user.email).set({
+    uid: user.email,
+    marbleValue: this.state.jarValue,
+    marbles: this.state.marbles,
+  }).then((res) => {
+    this.setState({
+      isLoading: false,    
+    });
+  })
+}
+updateMarble() {
+
 }
 render() {
   const { marbles } = this.state;
