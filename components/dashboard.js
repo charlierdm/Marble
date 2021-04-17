@@ -50,7 +50,7 @@ getCurrentDate = () => {
   return date + '/' + month + '/' + year;
 }
 handleAddMarble = (activity, cost) => {
-  const costInt = parseInt(cost);
+  const costInt = parseFloat(cost);
   const date = this.getCurrentDate();
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
@@ -86,7 +86,7 @@ render() {
     <View style={styles.container}>
       <Text style={styles.title}>Marble</Text>
       <Image style={styles.jar} source={require('../assets/jar.gif')}/>
-      <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
+      <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
 
