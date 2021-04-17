@@ -1,5 +1,5 @@
 import React from 'react';
-import { Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class MarbleInput extends React.Component {
   constructor(props) {
@@ -15,17 +15,23 @@ export default class MarbleInput extends React.Component {
   handleChangeCost = value => {
     this.setState({cost: value});
   }
+  numbersOnly = string => {
+    return /^\d+$/.test(string.toString()) ? true : false
+  }
   handleSubmit = () => {
     const { onSubmit } = this.props;
     const { activity } = this.state;
     const { cost } = this.state;
 
+    if(!this.numbersOnly(this.state.cost)) {
+      Alert.alert('Please enter numbers for the value!')
+    } else {
     if (!activity || !cost) return;
-
     onSubmit(activity, cost);
     this.setState({activity: ''});
     this.setState({cost: ''});
     Keyboard.dismiss();
+    }
   }
   render() {
     const { activity } = this.state;

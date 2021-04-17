@@ -55,7 +55,13 @@ export default class Signup extends Component {
           this.props.navigation.navigate('Dashboard')
         })
       })
-      .catch(error => this.setState({ errorMessage: error.message }))
+      .catch((error => {this.setState({ errorMessage: error.message });
+      this.setState({
+        isLoading: false,
+      })
+      Alert.alert(this.state.errorMessage);
+      this.props.navigation.navigate('Signup')
+    }))
     }
   }
 

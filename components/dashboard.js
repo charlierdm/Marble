@@ -46,7 +46,6 @@ getCurrentDate = () => {
   var date = new Date().getDate();
   var month = new Date().getMonth() + 1;
   var year = new Date().getFullYear();
-  //return date in the desired format
   return date + '/' + month + '/' + year;
 }
 handleAddMarble = (activity, cost) => {
@@ -57,7 +56,6 @@ handleAddMarble = (activity, cost) => {
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
     this.storeMarble();
   })
-  this.updateMarble();
 }
 storeMarble() {
   const user = firebase.auth().currentUser
@@ -71,9 +69,6 @@ storeMarble() {
       isLoading: false,    
     });
   })
-}
-updateMarble() {
-
 }
 render() {
   const { marbles } = this.state;
@@ -91,7 +86,7 @@ render() {
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
 
       <FlatList
-      data={marbles}
+      data={marbles.slice().reverse()}
       renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
       keyExtractor={(item, index) => {
         return  index.toString();
