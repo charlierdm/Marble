@@ -9,7 +9,7 @@ export default class Dashboard extends Component {
 	componentDidMount() {
     this.animation.play();
     // Or set a specific startFrame and endFrame with:
-   this.animation.play(0, 100);
+  //  this.animation.play(0, 100);
   }
 
 	holdAnimation = () => {
@@ -66,13 +66,11 @@ render() {
             ref={animation => {
               this.animation = animation;
             }}
-						
+						style={styles.jar}
             source={require('../assets/animations/add-marble-gold.json')}
-            // OR find more Lottie files @ https://lottiefiles.com/featured
-            // Just click the one you like, place that file in the 'assets' folder to the left, and replace the above 'require' statement
           />
       <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
-      <MarbleInput onSubmit={this.handleAddMarble}/>
+      <MarbleInput onSubmit={this.handleAddMarble} onSubmit={this.resetAnimation}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
 
       <FlatList
@@ -107,9 +105,8 @@ title: {
 },
 jar: {
   alignSelf: 'center',
-  resizeMode: 'contain',
-  width: 180,
-  position: 'absolute', top: -100,
+  width: 280,
+  position: 'absolute', top: 0,
 },
 jarValue: {
   marginTop: 260,
