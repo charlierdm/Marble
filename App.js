@@ -24,7 +24,7 @@ function MyStack() {
           fontWeight: 'bold',
         },
       }}>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Signup"
         component={Signup}
         options={{ title: 'Signup' }}
@@ -36,7 +36,7 @@ function MyStack() {
           {title: 'Login'},
           {headerLeft: null}
         }
-      />
+      /> */}
       <Stack.Screen
        name="Dashboard"
        component={Dashboard}

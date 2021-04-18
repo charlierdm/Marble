@@ -2,10 +2,24 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
-import firebase from '../database/firebase';
+import firebase from '../database/firebase'
+import LottieView from 'lottie-react-native';
 
 export default class Dashboard extends Component {
+	componentDidMount() {
+    this.animation.play();
+    // Or set a specific startFrame and endFrame with:
+   this.animation.play(0, 100);
+  }
 
+	holdAnimation = () => {
+		this.animation.play(0, 0);
+	}
+
+  resetAnimation = () => {
+    this.animation.reset();
+    this.animation.play();
+	}
   signOut = () => {
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Login')
@@ -46,8 +60,17 @@ render() {
     style={styles.container}
     behavior="height">
     <View style={styles.container}>
+			
       <Text style={styles.title}>Marble</Text>
-      <Image style={styles.jar} source={require('../assets/jar.gif')}/>
+			<LottieView
+            ref={animation => {
+              this.animation = animation;
+            }}
+						
+            source={require('../assets/animations/add-marble-gold.json')}
+            // OR find more Lottie files @ https://lottiefiles.com/featured
+            // Just click the one you like, place that file in the 'assets' folder to the left, and replace the above 'require' statement
+          />
       <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
