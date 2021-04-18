@@ -6,20 +6,6 @@ import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 
 export default class Dashboard extends Component {
-	componentDidMount() {
-    this.animation.play();
-    // Or set a specific startFrame and endFrame with:
-  //  this.animation.play(0, 100);
-  }
-
-	holdAnimation = () => {
-		this.animation.play(0, 0);
-	}
-
-  resetAnimation = () => {
-    this.animation.reset();
-    this.animation.play();
-	}
   signOut = () => {
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Login')
@@ -51,6 +37,17 @@ handleAddMarble = (activity, cost) => {
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
   // save latest marble in the marbles array
 }
+
+componentDidMount() {
+	this.animation.play(0, 0);
+	// Or set a specific startFrame and endFrame with:
+//  this.animation.play(0, 100);
+}
+
+resetAnimation = () => {
+	this.animation.reset();
+	this.animation.play();
+}
 render() {
   const { marbles } = this.state;
   let recentHeading = ""
@@ -70,7 +67,7 @@ render() {
             source={require('../assets/animations/add-marble-gold.json')}
           />
       <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
-      <MarbleInput onSubmit={this.handleAddMarble} onSubmit={this.resetAnimation}/>
+      <MarbleInput onSubmit={this.handleAddMarble} />
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
 
       <FlatList
