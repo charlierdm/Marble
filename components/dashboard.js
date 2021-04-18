@@ -35,19 +35,10 @@ handleAddMarble = (activity, cost) => {
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
+	this.add_marble_animation.play(20, 63)
   // save latest marble in the marbles array
 }
 
-componentDidMount() {
-	this.animation.play(0, 0);
-	// Or set a specific startFrame and endFrame with:
-//  this.animation.play(0, 100);
-}
-
-resetAnimation = () => {
-	this.animation.reset();
-	this.animation.play();
-}
 render() {
   const { marbles } = this.state;
   let recentHeading = ""
@@ -60,13 +51,16 @@ render() {
 			
       <Text style={styles.title}>Marble</Text>
 			<LottieView
-            ref={animation => {
-              this.animation = animation;
+            autoPlay={false}
+						loop={false}
+						ref={animation => {
+              this.add_marble_animation = animation;
             }}
 						style={styles.jar}
             source={require('../assets/animations/add-marble-gold.json')}
           />
       <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
+			
       <MarbleInput onSubmit={this.handleAddMarble} />
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
 
