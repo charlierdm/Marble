@@ -10,7 +10,7 @@
 
 An invisible habit is a habit that provides no immediate result or visual cue. Not buying a takeaway, or not buying new clothes, resisting the temptation to buy cigarettes or getting a cab home instead of walking.
 
-Choosing the healthier,<strong><em>better</strong></em>, or cost effective option does not always provide visual feedback or a reward, thus making these habits harder to stick to over long periods of time.
+Choosing the healthier, <strong><em>better</strong></em>, or more cost effective option does not always provide visual feedback or a reward, thus making these habits harder to stick to over long periods of time.
 
 The <strong>idea</strong> behing Marble is to assist the user in forming, and sticking to their goals by creating a sensory reward for their <strong><em>'not doing'</strong></em> of various consumerist habits.
 
