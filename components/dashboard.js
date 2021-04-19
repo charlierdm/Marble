@@ -35,6 +35,7 @@ handleAddMarble = (activity, cost) => {
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
+	// below line plays animation when marble added
 	this.add_marble_animation.play(20, 63)
   // save latest marble in the marbles array
 }
