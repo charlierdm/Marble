@@ -12,7 +12,8 @@ export default class Profile extends Component {
   }
 
   userDelete = () => {
-    firebase.auth().delete().then(() => {
+    var user = firebase.auth().currentUser;
+    user.delete().then(() => {
       this.props.navigation.navigate('Login')
     })
     .catch(error => this.setState({ errorMessage: error.message }))
