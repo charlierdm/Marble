@@ -21,13 +21,10 @@ export default class HomeScreen extends Component {
       <Tab.Navigator 
       tabBarOptions={{
         style: { backgroundColor: 'powderblue' },
-        
-        }
-      
-      }
+      }}
       
       >
-      <Tab.Screen name="Marbles" component={Dashboard} />
+      <Tab.Screen name="Home" component={Dashboard} />
       <Tab.Screen name="About" component={About} />
     </Tab.Navigator> 
     )
