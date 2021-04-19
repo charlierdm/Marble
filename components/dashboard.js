@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
-import firebase from '../database/firebase';
+import firebase from '../database/firebase'
+import LottieView from 'lottie-react-native';
 
 export default class Dashboard extends Component {
-
   signOut = () => {
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Login')
@@ -56,6 +56,7 @@ handleAddMarble = (activity, cost) => {
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
     this.storeMarble();
   })
+  this.add_marble_animation.play(20, 63)
 }
 storeMarble() {
   const user = firebase.auth().currentUser
@@ -70,6 +71,7 @@ storeMarble() {
     });
   })
 }
+
 render() {
   const { marbles } = this.state;
   let recentHeading = ""
@@ -79,8 +81,18 @@ render() {
     style={styles.container}
     behavior="height">
     <View style={styles.container}>
+			
       <Text style={styles.title}>Marble</Text>
-      <Image style={styles.jar} source={require('../assets/jar.gif')}/>
+
+			<LottieView
+            autoPlay={false}
+						loop={false}
+						ref={animation => {
+              this.add_marble_animation = animation;
+            }}
+						style={styles.jar}
+            source={require('../assets/animations/add-marble-gold.json')}
+          />
       <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
@@ -117,9 +129,8 @@ title: {
 },
 jar: {
   alignSelf: 'center',
-  resizeMode: 'contain',
-  width: 180,
-  position: 'absolute', top: -100,
+  width: 280,
+  position: 'absolute', top: 0,
 },
 jarValue: {
   marginTop: 260,
