@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList, ImageBackground } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
@@ -19,7 +19,13 @@ export default class HomeScreen extends Component {
     const Tab = createMaterialTopTabNavigator();  
     return(
       <Tab.Navigator 
-      // tabBarOptions={{showLabel: false}}
+      tabBarOptions={{
+        style: { backgroundColor: 'powderblue' },
+        
+        }
+      
+      }
+      
       >
       <Tab.Screen name="Marbles" component={Dashboard} />
       <Tab.Screen name="About" component={About} />
@@ -27,6 +33,8 @@ export default class HomeScreen extends Component {
     )
   }
 }
+
+
 
 
 

@@ -35,9 +35,8 @@ function MyStack() {
        name="HomeScreen"
        component={HomeScreen}
        options={
-         { title: 'Dashboard' },
-         {headerLeft: null}
-       }
+         { title: 'Dashboard' }      
+        }
       />
     </Stack.Navigator>
   );
