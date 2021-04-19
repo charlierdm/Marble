@@ -84,7 +84,7 @@ render() {
     <View style={styles.container}>
 			
 
-			{/* <LottieView
+			<LottieView
             autoPlay={false}
 						loop={false}
 						ref={animation => {
@@ -92,7 +92,7 @@ render() {
             }}
 						style={styles.jar}
             source={require('../assets/animations/add-marble-gold.json')}
-          /> */}
+          />
       <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
