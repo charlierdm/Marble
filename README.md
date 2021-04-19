@@ -2,7 +2,7 @@
 
 ![marazzi_grande_marble_look_4 jpg__1920x700_q75_crop_subsampling-2](https://user-images.githubusercontent.com/75075773/114753713-b0419f80-9d4f-11eb-844d-3e48915fb921.jpg)
 
-<strong><em>Marble is a savings app to help you visualise your invisible habits - it's designed to assist you in developing non-consumerist habits and in turn; support your long term saving goals.</em></strong>
+<strong><em>Marble is a savings app to help you visualise your invisible habits - it's designed to assist you in developing non-consumerist behaviour and in turn; support your long term saving goals.</em></strong>
 
 ## Philosophy
 
