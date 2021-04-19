@@ -6,7 +6,8 @@ import MarbleInput from './components/MarbleInput'
 import Marble from './components/Marble'
 import Login from './components/login';
 import Signup from './components/signup';
-import Dashboard from './components/dashboard'
+import Dashboard from './components/dashboard';
+import HomeScreen from './components/homeScreen'
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ function MyStack() {
     <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{
+        headerShown: false,
         headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: '#3740FE',
@@ -38,8 +40,8 @@ function MyStack() {
         }
       />
       <Stack.Screen
-       name="Dashboard"
-       component={Dashboard}
+       name="HomeScreen"
+       component={HomeScreen}
        options={
          { title: 'Dashboard' },
          {headerLeft: null}
