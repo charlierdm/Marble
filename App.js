@@ -18,7 +18,7 @@ function MyStack() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Signup"
         component={Signup}
         options={{ title: 'Signup' }}
@@ -30,7 +30,7 @@ function MyStack() {
           {title: 'Login'},
           {headerLeft: null}
         }
-      />
+      /> */}
       <Stack.Screen
        name="HomeScreen"
        component={HomeScreen}

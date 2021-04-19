@@ -6,16 +6,16 @@ import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 
 export default class Dashboard extends Component {
-  signOut = () => {
-    firebase.auth().signOut().then(() => {
-      this.props.navigation.navigate('Login')
-    })
-    .catch(error => this.setState({ errorMessage: error.message }))
-  }
+  // signOut = () => {
+  //   firebase.auth().signOut().then(() => {
+  //     this.props.navigation.navigate('Login')
+  //   })
+  //   .catch(error => this.setState({ errorMessage: error.message }))
+  // }
 
 constructor(props) {
   super(props);
-  this.dbRef = firebase.firestore().collection('marbles');
+  // this.dbRef = firebase.firestore().collection('marbles');
   this.state = {
     jarValue: 0,
     activity: '',
@@ -26,21 +26,21 @@ constructor(props) {
   }
 }
 componentDidMount() {
-  const user = firebase.auth().currentUser
-  const dbRef = this.dbRef.doc(user.email)
-  dbRef.get().then((res) => {
-    if (res.exists) {
-      const marbles = res.data();
-      this.setState({
-        jarValue: marbles.marbleValue,
-        marbles: marbles.marbles,
-        email: user.email,
-        isLoading: false
-      });
-    } else {
-      console.log("Document does not exist!");
-    }
-  });
+  // const user = firebase.auth().currentUser
+  // const dbRef = this.dbRef.doc(user.email)
+  // dbRef.get().then((res) => {
+  //   if (res.exists) {
+  //     const marbles = res.data();
+  //     this.setState({
+  //       jarValue: marbles.marbleValue,
+  //       marbles: marbles.marbles,
+  //       email: user.email,
+  //       isLoading: false
+  //     });
+  //   } else {
+  //     console.log("Document does not exist!");
+  //   }
+  // });
 }
 getCurrentDate = () => {
   var date = new Date().getDate();
@@ -54,23 +54,23 @@ handleAddMarble = (activity, cost) => {
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
-    this.storeMarble();
+    // this.storeMarble();
   })
   this.add_marble_animation.play(20, 63)
 }
-storeMarble() {
-  const user = firebase.auth().currentUser
-  this.setState({isLoading: true,});
-  this.dbRef.doc(user.email).set({
-    uid: user.email,
-    marbleValue: this.state.jarValue,
-    marbles: this.state.marbles,
-  }).then((res) => {
-    this.setState({
-      isLoading: false,    
-    });
-  })
-}
+// storeMarble() {
+//   const user = firebase.auth().currentUser
+//   this.setState({isLoading: true,});
+//   this.dbRef.doc(user.email).set({
+//     uid: user.email,
+//     marbleValue: this.state.jarValue,
+//     marbles: this.state.marbles,
+//   }).then((res) => {
+//     this.setState({
+//       isLoading: false,    
+//     });
+//   })
+// }
 
 render() {
   const { marbles } = this.state;
