@@ -15,27 +15,60 @@ export default class Dashboard extends Component {
 
 constructor(props) {
   super(props);
+  this.dbRef = firebase.firestore().collection('marbles');
   this.state = {
     jarValue: 0,
     activity: '',
     marbles: [],
-    uid: ''
+    uid: '',
+    isLoading: false, 
+    email: '',
   }
+}
+componentDidMount() {
+  const user = firebase.auth().currentUser
+  const dbRef = this.dbRef.doc(user.email)
+  dbRef.get().then((res) => {
+    if (res.exists) {
+      const marbles = res.data();
+      this.setState({
+        jarValue: marbles.marbleValue,
+        marbles: marbles.marbles,
+        email: user.email,
+        isLoading: false
+      });
+    } else {
+      console.log("Document does not exist!");
+    }
+  });
 }
 getCurrentDate = () => {
   var date = new Date().getDate();
   var month = new Date().getMonth() + 1;
   var year = new Date().getFullYear();
-  //return date in the desired format
   return date + '/' + month + '/' + year;
 }
 handleAddMarble = (activity, cost) => {
-  const costInt = parseInt(cost);
+  const costInt = parseFloat(cost);
   const date = this.getCurrentDate();
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
-  this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] })
-  // save latest marble in the marbles array
+  this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
+    this.storeMarble();
+  })
+}
+storeMarble() {
+  const user = firebase.auth().currentUser
+  this.setState({isLoading: true,});
+  this.dbRef.doc(user.email).set({
+    uid: user.email,
+    marbleValue: this.state.jarValue,
+    marbles: this.state.marbles,
+  }).then((res) => {
+    this.setState({
+      isLoading: false,    
+    });
+  })
 }
 render() {
   const { marbles } = this.state;
@@ -48,12 +81,12 @@ render() {
     <View style={styles.container}>
       <Text style={styles.title}>Marble</Text>
       <Image style={styles.jar} source={require('../assets/jar.gif')}/>
-      <Text style={styles.jarValue}>Jar Value: £ {this.state.jarValue}</Text>
+      <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
 
       <FlatList
-      data={marbles}
+      data={marbles.slice().reverse()}
       renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
       keyExtractor={(item, index) => {
         return  index.toString();
