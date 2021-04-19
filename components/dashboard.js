@@ -105,11 +105,11 @@ render() {
        }}
       />
 
-      <Button
+      {/* <Button
           color="#3740FE"
           title="Logout"
           onPress={() => this.signOut()}
-        />
+        /> */}
 
     </View>
     </KeyboardAvoidingView>

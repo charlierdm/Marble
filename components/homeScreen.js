@@ -18,11 +18,12 @@ export default class HomeScreen extends Component {
   render() {
     const Tab = createMaterialTopTabNavigator();  
     return(
-      <Tab.Navigator>
+      <Tab.Navigator 
+      // tabBarOptions={{showLabel: false}}
+      >
       <Tab.Screen name="Marbles" component={Dashboard} />
       <Tab.Screen name="About" component={About} />
     </Tab.Navigator> 
-    
     )
   }
 }

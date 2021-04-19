@@ -17,14 +17,6 @@ function MyStack() {
       initialRouteName="Login"
       screenOptions={{
         headerShown: false,
-        headerTitleAlign: 'center',
-        headerStyle: {
-          backgroundColor: '#3740FE',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
       }}>
       <Stack.Screen
         name="Signup"

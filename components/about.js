@@ -22,5 +22,6 @@ export default class About extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#e6fffa',
+    flex: 1
   }
 })
