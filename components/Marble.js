@@ -16,7 +16,7 @@ export default class Marble extends React.Component {
       <Text style={styles.text}>{this.props.date}</Text>
       </View>
       <View style={styles.textView}>
-      <Text style={styles.activity}>{this.props.activity}</Text>
+      <Text style={styles.text}>{this.props.activity}</Text>
       </View>
       <View style={styles.textView}>
       <Text style={styles.text}>£ {cost}</Text>
@@ -31,12 +31,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderRadius: 20,
   },
   text: {
     textAlign: 'left',
     marginLeft: 10,
     marginRight: 10,
+    color: '#395444'
   },
   activity: {
     textTransform: 'capitalize'

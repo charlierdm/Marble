@@ -15,14 +15,17 @@ function MyStack() {
     <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{
+        headerTitle: 'Marble',
         headerTitleAlign: 'center',
         headerStyle: {
-          backgroundColor: '#3740FE',
+          backgroundColor: '#FAF5F0',
+          height: 110,
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#82A993',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        headerTransparent: false,
       }}>
       <Stack.Screen
         name="Signup"
