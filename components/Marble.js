@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginLeft: 10,
     marginRight: 10,
-    color: '#395444'
+    color: '#638270',
   },
   activity: {
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    color: '#82A993',
   }
 })

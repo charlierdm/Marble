@@ -103,7 +103,23 @@ storeMarble() {
 render() {
   const { marbles } = this.state;
   let recentHeading = ""
+  let marblesList = ""
   marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = "" //render heading depends on marbles count
+
+  if (marbles.length === 0) {
+    marblesList = <Text style={styles.noMarbles}>You don't have any marbles yet. Go and add one!</Text>;
+  } else {
+    marblesList =  <FlatList
+    data={marbles.slice().reverse()}
+    extraData={this.state.refresh}
+    renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
+    keyExtractor={(item, index) => {
+      return  index.toString();
+     }}
+     contentContainerStyle={{ paddingBottom: 20 }}
+    /> 
+  }
+  
   return (
     <KeyboardAvoidingView
     style={styles.container}
@@ -121,27 +137,23 @@ render() {
 						style={styles.jar}
             source={require('../assets/animations/add-marble-gold.json')}
           />
-      <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
+      <Text style={styles.jarValue}> £ <Text style={styles.value}>{(this.state.jarValue).toFixed(2)}</Text></Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
      <View style={styles.recentMarbles}>
+      
+     {marblesList}
+      
 
-      <FlatList
-      data={marbles.slice().reverse()}
-      renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
-      keyExtractor={(item, index) => {
-        return  index.toString();
-       }}
-       contentContainerStyle={{ paddingBottom: 20 }}
-      />
+
+     
       </View>
-      <Button
-          color="#3740FE"
-          title="Logout"
-          onPress={() => this.signOut()}
-        />
-    </View>
-    </ScrollView>
+      </View>
+      </ScrollView>
+      <TouchableOpacity style={styles.logOut} onPress={() => this.signOut()}>
+        <Text style={styles.logoutText}>Log out</Text>
+      </TouchableOpacity>
+    
     </KeyboardAvoidingView>
   );
 }
@@ -183,13 +195,14 @@ button: {
   alignItems: 'center',
 },
 text: {
-  color: '#567061',
+  color: '#465c4f',
   fontWeight: 'bold'
 },
 recentMarbles: {
   flex: 1,
-  marginBottom: 10,
+  marginBottom: 50,
   marginTop: 10,
+  paddingTop: 10,
   backgroundColor: '#fffafa',
   borderRadius: 20,
   width: 350,
@@ -201,7 +214,33 @@ recentMarbles: {
   },
   shadowOpacity: 0.22,
   shadowRadius: 2.22,
+  
   elevation: 3,
-  padding: 10
+},
+noMarbles: {
+  color: '#82A993',
+  fontWeight: 'bold',
+  paddingTop: 0,
+  paddingLeft: 20,
+  paddingBottom: 10
+},
+logOut: {
+  flex: 1,
+  backgroundColor: '#FAF5F0',
+  width: 700,
+  flex: 1,
+    justifyContent: 'flex-end',
+  position: 'absolute',
+  bottom: 0,
+  paddingBottom: 10
+},
+logoutText: {
+  textAlign: 'center',
+  paddingTop: 5,
+  color: '#82A993',
+  fontWeight: 'bold'
+},
+value: {
+  fontSize: 22
 }
 });

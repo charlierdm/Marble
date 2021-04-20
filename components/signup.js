@@ -1,3 +1,5 @@
+// components/signup.js
+
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../database/firebase';
@@ -52,7 +54,7 @@ export default class Signup extends Component {
             email: '',
             password: ''
           })
-          this.props.navigation.navigate('Dashboard')
+          this.props.navigation.navigate('HomeScreen')
         })
       })
       .catch((error => {this.setState({ errorMessage: error.message });
