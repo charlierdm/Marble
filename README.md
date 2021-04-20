@@ -75,3 +75,4 @@ Marble was developed by:
 - Christine Chee
 - Jai Jalah Kumar
 - Maximilian Clarke
+- Sol Paek
