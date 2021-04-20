@@ -6,24 +6,30 @@ import MarbleInput from './components/MarbleInput'
 import Marble from './components/Marble'
 import Login from './components/login';
 import Signup from './components/signup';
-import Dashboard from './components/dashboard'
+// import Dashboard from './components/dashboard'
 import Profile from './components/profile';
+import HomeScreen from './components/homeScreen'
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName="Login"
       screenOptions={{
+
+        headerTitle: 'Marble',
         headerTitleAlign: 'center',
         headerStyle: {
-          backgroundColor: '#3740FE',
+          backgroundColor: '#FAF5F0',
+          height: 110,
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#82A993',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        headerTransparent: false,
+
       }}>
       <Stack.Screen
         name="Signup"
@@ -39,12 +45,11 @@ function MyStack() {
         }
       />
       <Stack.Screen
-       name="Dashboard"
-       component={Dashboard}
+       name="HomeScreen"
+       component={HomeScreen}
        options={
-         { title: 'Dashboard' },
-         {headerLeft: null}
-       }
+         { title: 'Dashboard' }      
+        }
       />
       <Stack.Screen
        name="Profile"

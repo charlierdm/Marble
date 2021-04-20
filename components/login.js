@@ -33,14 +33,13 @@ export default class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
-        console.log(res)
         console.log('User logged-in successfully!')
         this.setState({
           isLoading: false,
           email: '',
           password: ''
         })
-        this.props.navigation.navigate('Dashboard')
+        this.props.navigation.navigate('HomeScreen')
       })
       .catch(error => this.setState({ errorMessage: error.message }))
     }
@@ -71,7 +70,7 @@ export default class Login extends Component {
           secureTextEntry={true}
         />
         <Button
-          color="#3740FE"
+          color="#82A993"
           title="Signin"
           onPress={() => this.userLogin()}
         />
@@ -79,7 +78,7 @@ export default class Login extends Component {
         <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signup')}>
-          Don't have account? Click here to signup
+          Don't have an account? Click here to signup
         </Text>
       </View>
     );
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#567061',
     marginTop: 25,
     textAlign: 'center'
   },

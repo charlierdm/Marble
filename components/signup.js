@@ -1,5 +1,3 @@
-// components/signup.js
-
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../database/firebase';
@@ -57,7 +55,13 @@ export default class Signup extends Component {
           this.props.navigation.navigate('Dashboard')
         })
       })
-      .catch(error => this.setState({ errorMessage: error.message }))
+      .catch((error => {this.setState({ errorMessage: error.message });
+      this.setState({
+        isLoading: false,
+      })
+      Alert.alert(this.state.errorMessage);
+      this.props.navigation.navigate('Signup')
+    }))
     }
   }
 
@@ -92,7 +96,7 @@ export default class Signup extends Component {
           secureTextEntry={true}
         />
         <Button
-          color="#3740FE"
+          color="#82A993"
           title="Signup"
           onPress={() => this.registerUser()}
         />
@@ -125,7 +129,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#567061',
     marginTop: 25,
     textAlign: 'center'
   },

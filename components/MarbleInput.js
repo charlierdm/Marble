@@ -1,5 +1,5 @@
 import React from 'react';
-import { Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class MarbleInput extends React.Component {
   constructor(props) {
@@ -15,17 +15,23 @@ export default class MarbleInput extends React.Component {
   handleChangeCost = value => {
     this.setState({cost: value});
   }
+  numbersOnly = string => {
+    return /^\d+$/.test(string.toString()) ? true : false
+  }
   handleSubmit = () => {
     const { onSubmit } = this.props;
     const { activity } = this.state;
     const { cost } = this.state;
 
+    if(!this.numbersOnly(this.state.cost)) {
+      Alert.alert('Please enter numbers for the value!')
+    } else {
     if (!activity || !cost) return;
-
     onSubmit(activity, cost);
     this.setState({activity: ''});
     this.setState({cost: ''});
     Keyboard.dismiss();
+    }
   }
   render() {
     const { activity } = this.state;
@@ -54,7 +60,7 @@ export default class MarbleInput extends React.Component {
         style={styles.button}
         onPress={this.handleSubmit}
       >
-     <Text style={styles.text}>Add Marble</Text>
+     <Text style={styles.addText}>Add Marble</Text>
       </TouchableOpacity>
       </View>
     )
@@ -64,7 +70,7 @@ export default class MarbleInput extends React.Component {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
-    backgroundColor: '#adebeb',
+    backgroundColor: 'powderblue',
     width: 100,
     padding: 10,
     marginTop: 10,
@@ -80,7 +86,7 @@ const styles = StyleSheet.create({
   textInput: {
     height: 40,
     marginTop:15,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2efed',
     marginHorizontal: 40,
     paddingHorizontal: 10,
     borderRadius: 5,
@@ -89,10 +95,14 @@ const styles = StyleSheet.create({
   valueInput: {
     height: 40,
     marginTop: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2efed',
     marginHorizontal: 40,
     paddingHorizontal: 10,
     borderRadius: 5,
     width: 300,
+  },
+  addText: {
+    color: '#fff',
+    alignSelf: 'center'
   }
 })
