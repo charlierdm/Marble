@@ -70,7 +70,7 @@ export default class MarbleInput extends React.Component {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
-    backgroundColor: '#82A993',
+    backgroundColor: 'powderblue',
     width: 100,
     padding: 10,
     marginTop: 10,

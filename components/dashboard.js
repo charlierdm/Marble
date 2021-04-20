@@ -6,16 +6,16 @@ import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 
 export default class Dashboard extends Component {
-  signOut = () => {
-    firebase.auth().signOut().then(() => {
-      this.props.navigation.navigate('Login')
-    })
-    .catch(error => this.setState({ errorMessage: error.message }))
-  }
+  // signOut = () => {
+  //   firebase.auth().signOut().then(() => {
+  //     this.props.navigation.navigate('Login')
+  //   })
+  //   .catch(error => this.setState({ errorMessage: error.message }))
+  // }
 
 constructor(props) {
   super(props);
-  this.dbRef = firebase.firestore().collection('marbles');
+  // this.dbRef = firebase.firestore().collection('marbles');
   this.state = {
     jarValue: 0,
     activity: '',
@@ -26,6 +26,7 @@ constructor(props) {
   }
 }
 componentDidMount() {
+
   LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   const user = firebase.auth().currentUser
   const dbRef = this.dbRef.doc(user.email)
@@ -42,6 +43,7 @@ componentDidMount() {
       console.log("Document does not exist!");
     }
   });
+
 }
 getCurrentDate = () => {
   var date = new Date().getDate();
@@ -55,22 +57,22 @@ handleAddMarble = (activity, cost) => {
   this.setState({jarValue: this.state.jarValue + costInt})
   this.setState({activity: activity});
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
-    this.storeMarble();
+    // this.storeMarble();
   })
 }
-storeMarble() {
-  const user = firebase.auth().currentUser
-  this.setState({isLoading: true,});
-  this.dbRef.doc(user.email).set({
-    uid: user.email,
-    marbleValue: this.state.jarValue,
-    marbles: this.state.marbles,
-  }).then((res) => {
-    this.setState({
-      isLoading: false,    
-    });
-  })
-}
+// storeMarble() {
+//   const user = firebase.auth().currentUser
+//   this.setState({isLoading: true,});
+//   this.dbRef.doc(user.email).set({
+//     uid: user.email,
+//     marbleValue: this.state.jarValue,
+//     marbles: this.state.marbles,
+//   }).then((res) => {
+//     this.setState({
+//       isLoading: false,    
+//     });
+//   })
+// }
 
 render() {
   const { marbles } = this.state;
@@ -107,14 +109,11 @@ render() {
        contentContainerStyle={{ paddingBottom: 20 }}
       />
       </View>
-
-      <TouchableOpacity   
-        style={styles.button}
-        onPress={() => this.signOut()}
-      >
-     <Text style={styles.text}>Logout</Text>
-      </TouchableOpacity>
-
+      {/* <Button
+          color="#3740FE"
+          title="Logout"
+          onPress={() => this.signOut()}
+        /> */}
     </View>
     </ScrollView>
     </KeyboardAvoidingView>
