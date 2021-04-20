@@ -61,6 +61,7 @@ async componentDidMount() {
 }
 
 playSound() {
+  this.sound.setPositionAsync(0)
   this.sound.playAsync();
   
 }
