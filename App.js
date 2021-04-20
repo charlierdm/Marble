@@ -30,7 +30,7 @@ function MyStack() {
         headerTransparent: false,
 
       }}>
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Signup"
         component={Signup}
         options={{ title: 'Signup' }}
@@ -42,7 +42,7 @@ function MyStack() {
           {title: 'Login'},
           {headerLeft: null}
         }
-      /> */}
+      />
       <Stack.Screen
        name="HomeScreen"
        component={HomeScreen}
