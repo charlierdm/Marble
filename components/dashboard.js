@@ -117,7 +117,7 @@ render() {
 						style={styles.jar}
             source={require('../assets/animations/add-marble-gold.json')}
           />
-      <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
+      <Text style={styles.jarValue}> £ <Text style={styles.value}>{(this.state.jarValue).toFixed(2)}</Text></Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
      <View style={styles.recentMarbles}>
@@ -175,7 +175,7 @@ button: {
   alignItems: 'center',
 },
 text: {
-  color: '#567061',
+  color: '#465c4f',
   fontWeight: 'bold'
 },
 recentMarbles: {
@@ -200,7 +200,7 @@ recentMarbles: {
 noMarbles: {
   color: '#82A993',
   fontWeight: 'bold',
-  paddingTop: 10,
+  paddingTop: 0,
   paddingLeft: 20,
   paddingBottom: 10
 },
@@ -219,5 +219,8 @@ logoutText: {
   paddingTop: 5,
   color: '#82A993',
   fontWeight: 'bold'
+},
+value: {
+  fontSize: 22
 }
 });

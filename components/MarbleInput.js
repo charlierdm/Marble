@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert, Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 
+
 export default class MarbleInput extends React.Component {
   constructor(props) {
     super(props);
@@ -32,8 +33,10 @@ export default class MarbleInput extends React.Component {
   render() {
     const { activity } = this.state;
     const { cost } = this.state;
+
     return (
       <View style={styles.container}>
+
       <TextInput
         style={styles.textInput}
         autoCorrect={false}
@@ -42,6 +45,7 @@ export default class MarbleInput extends React.Component {
         value={activity}
         onChangeText={this.handleChangeActivity}
       />
+
       <TextInput
         style={styles.valueInput}
         autoCorrect={false}
@@ -80,7 +84,6 @@ const styles = StyleSheet.create({
   elevation: 3,
   },
   container: { 
-    marginTop: 10,
     alignItems: 'center',
     marginLeft: 10,
   },
