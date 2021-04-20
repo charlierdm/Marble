@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
+import { LogBox, ScrollView, TouchableOpacity, StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
 import firebase from '../database/firebase'
@@ -26,21 +26,24 @@ constructor(props) {
   }
 }
 componentDidMount() {
-  // const user = firebase.auth().currentUser
-  // const dbRef = this.dbRef.doc(user.email)
-  // dbRef.get().then((res) => {
-  //   if (res.exists) {
-  //     const marbles = res.data();
-  //     this.setState({
-  //       jarValue: marbles.marbleValue,
-  //       marbles: marbles.marbles,
-  //       email: user.email,
-  //       isLoading: false
-  //     });
-  //   } else {
-  //     console.log("Document does not exist!");
-  //   }
-  // });
+
+  LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  const user = firebase.auth().currentUser
+  const dbRef = this.dbRef.doc(user.email)
+  dbRef.get().then((res) => {
+    if (res.exists) {
+      const marbles = res.data();
+      this.setState({
+        jarValue: marbles.marbleValue,
+        marbles: marbles.marbles,
+        email: user.email,
+        isLoading: false
+      });
+    } else {
+      console.log("Document does not exist!");
+    }
+  });
+
 }
 getCurrentDate = () => {
   var date = new Date().getDate();
@@ -56,7 +59,6 @@ handleAddMarble = (activity, cost) => {
   this.setState({ marbles: [...this.state.marbles, {date: date, activity: activity, cost: costInt}] }, function() {
     // this.storeMarble();
   })
-  this.add_marble_animation.play(20, 63)
 }
 // storeMarble() {
 //   const user = firebase.auth().currentUser
@@ -80,9 +82,9 @@ render() {
     <KeyboardAvoidingView
     style={styles.container}
     behavior="height">
+      <ScrollView>
     <View style={styles.container}>
 			
-      <Text style={styles.title}>Marble</Text>
 
 			<LottieView
             autoPlay={false}
@@ -96,6 +98,7 @@ render() {
       <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
+     <View style={styles.recentMarbles}>
 
       <FlatList
       data={marbles.slice().reverse()}
@@ -103,15 +106,16 @@ render() {
       keyExtractor={(item, index) => {
         return  index.toString();
        }}
+       contentContainerStyle={{ paddingBottom: 20 }}
       />
-
+      </View>
       {/* <Button
           color="#3740FE"
           title="Logout"
           onPress={() => this.signOut()}
         /> */}
-
     </View>
+    </ScrollView>
     </KeyboardAvoidingView>
   );
 }
@@ -120,7 +124,7 @@ render() {
 const styles = StyleSheet.create({
 container: {
   flex: 1,
-  backgroundColor: '#e6fffa',
+  backgroundColor: '#fff',
 },
 title: {
   fontSize: 30,
@@ -134,11 +138,44 @@ jar: {
 },
 jarValue: {
   marginTop: 260,
-  textAlign: 'center'
+  textAlign: 'center',
+  color: '#82A993',
+  fontWeight: 'bold'
 },
 recentMarblesHeading: {
   fontSize: 20,
-  marginLeft: 10,
+  marginLeft: 25,
+  marginTop: 15,
+  color: '#82A993',
+  fontWeight: 'bold'
+},
+button: {
+  backgroundColor: '#FAF5F0',
+  width: 700,
+  padding: 10,
   marginTop: 10,
+  alignItems: 'center',
+},
+text: {
+  color: '#567061',
+  fontWeight: 'bold'
+},
+recentMarbles: {
+  flex: 1,
+  marginBottom: 10,
+  marginTop: 10,
+  backgroundColor: '#fffafa',
+  borderRadius: 20,
+  width: 350,
+  alignSelf: 'center',
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+  elevation: 3,
+  padding: 10
 }
 });
