@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     color: '#82A993',
   },
   activity: {
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    color: '#82A993',
   }
 })
