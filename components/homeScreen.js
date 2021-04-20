@@ -20,7 +20,13 @@ export default class HomeScreen extends Component {
     return(
       <Tab.Navigator 
       tabBarOptions={{
-        style: { backgroundColor: 'powderblue' },
+        style: { 
+        backgroundColor: '#FAF5F0',
+        elevation: 0,
+      }, indicatorStyle: {
+        width: 0, height: 0, elevation: 0,      
+      }, activeTintColor: '#82A993',
+          inactiveTintColor: 'gray',
       }}
       
       >

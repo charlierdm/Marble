@@ -8,9 +8,19 @@ import Login from './components/login';
 import Signup from './components/signup';
 // import Dashboard from './components/dashboard'
 import Profile from './components/profile';
-import HomeScreen from './components/homeScreen'
+import HomeScreen from './components/homeScreen';
+import { AppLoading } from "expo";
+import { 
+  useFonts, Courgette_400Regular 
+} from '@expo-google-fonts/courgette';
+
+
 
 const Stack = createStackNavigator();
+
+const customFonts = {
+  Courgette: require("./assets/fonts/Courgette-Regular.ttf"),
+};
 
 function MyStack() {
   return (
@@ -26,7 +36,8 @@ function MyStack() {
         },
         headerTintColor: '#82A993',
         headerTitleStyle: {
-          fontWeight: 'bold',
+          fontWeight: '300',
+          fontSize: 24
         },
         headerTransparent: false,
 
@@ -64,9 +75,11 @@ function MyStack() {
 }
 
 export default function App() {
+
   return (
     <NavigationContainer>
       <MyStack />
     </NavigationContainer>
   );
+  
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
 import firebase from '../database/firebase'
@@ -13,10 +13,26 @@ export default class About extends Component {
   render() {
     return(
       <View style={styles.container}>
-       <Text>Must go faster. Checkmate... Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Remind me to thank John for a lovely weekend. Hey, you know how I'm, like, always trying to save the planet? Here's my chance.
+        <ScrollView>
+        <Image
+          style={styles.image}
+          source={require('../assets/Images/marble.jpeg')}
+        />
+       <Text style={styles.text}>
+       Marble is an app designed to help you achieve consistency in your invisible habits.{'\n\n'}
 
-Hey, you know how I'm, like, always trying to save the planet? Here's my chance. Life finds a way. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists. We gotta burn the rain forest, dump toxic waste, pollute the air, and rip up the OZONE! 'Cause maybe if we screw up this planet enough, they won't want it anymore!
-</Text>
+<Text style={styles.header}>What is an invisible habit?{'\n\n'}</Text>
+
+Not buying takeaway, not buying new clothing, not travelling by cab and walking instead. They are habits with no immediate reward or visual cue. These habits are harder to maintain as they lack visual feedback, the fruits of not doing these things only becomes clear over a longer time frame.{'\n\n'}
+That is where Marble comes in. Track your invisible habits by entering which form of consumption you haven’t indulged in and how much you have saved.{'\n\n'}
+
+<Text style={styles.example}>Example: Sushi - £40{'\n\n'}</Text>
+
+Marble delivers visual and audio feedback to provide a sense of reward to help reinforce the positive steps you wish to take in your life. We at marble hope this helps you in achieving your long-term goals and improving your savings.{'\n\n'}
+In reducing your consumerism, you are contributing to a greener society that is not so focused on acquiring the next thing. Instead, you will develop mindfulness of the actions you take, save the planets resources and improve your finances for a brighter future.{'\n\n'}
+
+       </Text>
+       </ScrollView>
       </View>
     )
   }
@@ -24,7 +40,27 @@ Hey, you know how I'm, like, always trying to save the planet? Here's my chance.
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#e6fffa',
-    flex: 1
+    backgroundColor: '#fff',
+    flex: 1,
+  },
+  image: {
+    width: 400,
+    height: 200
+  },
+  text: {
+   fontFamily: 'sans-serif-light',
+   fontSize: 16,
+   textAlign: 'justify',
+   lineHeight: 25,
+   color: "#465c4f",
+   padding: 20
+  },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 20
+  },
+  example: {
+    fontWeight: 'bold',
+    fontSize: 16
   }
 })
