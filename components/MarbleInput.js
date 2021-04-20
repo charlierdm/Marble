@@ -23,15 +23,11 @@ export default class MarbleInput extends React.Component {
     const { activity } = this.state;
     const { cost } = this.state;
 
-    if(!this.numbersOnly(this.state.cost)) {
-      Alert.alert('Please enter numbers for the value!')
-    } else {
     if (!activity || !cost) return;
     onSubmit(activity, cost);
     this.setState({activity: ''});
     this.setState({cost: ''});
     Keyboard.dismiss();
-    }
   }
   render() {
     const { activity } = this.state;
