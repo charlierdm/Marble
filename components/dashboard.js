@@ -5,6 +5,9 @@ import Marble from './Marble'
 import Profile from './profile';
 import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
+import { Audio } from 'expo-av';
+
+
 
 export default class Dashboard extends Component {
   signOut = () => {
@@ -30,7 +33,7 @@ constructor(props) {
     email: '',
   }
 }
-componentDidMount() {
+async componentDidMount() {
 
   LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   const user = firebase.auth().currentUser
@@ -49,7 +52,20 @@ componentDidMount() {
     }
   });
 
+  this.sound = new Audio.Sound();
+
+  const status = {
+    shouldPlay: false
+  };
+  this.sound.loadAsync(require('../assets/sounds/marble_sound.wav'), status, false)
 }
+
+playSound() {
+  this.sound.setPositionAsync(0)
+  this.sound.playAsync();
+  
+}
+
 getCurrentDate = () => {
   var date = new Date().getDate();
   var month = new Date().getMonth() + 1;
@@ -65,6 +81,8 @@ handleAddMarble = (activity, cost) => {
   this.storeMarble();
   })
 }
+
+
 storeMarble() {
   const user = firebase.auth().currentUser
   this.setState({isLoading: true,});
@@ -78,7 +96,9 @@ storeMarble() {
     });
   })
   this.add_marble_animation.play(20, 63);
+  this.playSound()
 }
+
 
 render() {
   const { marbles } = this.state;
