@@ -35,7 +35,7 @@ constructor(props) {
 }
 async componentDidMount() {
 
-  LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  
   const user = firebase.auth().currentUser
   const dbRef = this.dbRef.doc(user.email)
   dbRef.get().then((res) => {
@@ -109,22 +109,26 @@ render() {
   if (marbles.length === 0) {
     marblesList = <Text style={styles.noMarbles}>You don't have any marbles yet. Go and add one!</Text>;
   } else {
-    marblesList =  <FlatList
+    marblesList = 
+
+    <FlatList
     data={marbles.slice().reverse()}
+    horizontal={false}
     extraData={this.state.refresh}
     renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
     keyExtractor={(item, index) => {
       return  index.toString();
      }}
      contentContainerStyle={{ paddingBottom: 20 }}
-    /> 
+    />
   }
   
   return (
     <KeyboardAvoidingView
     style={styles.container}
     behavior="height">
-      <ScrollView>
+      <ScrollView horizontal={false}>
+      <ScrollView horizontal={true}>
     <View style={styles.container}>
 			
 
@@ -143,12 +147,10 @@ render() {
      <View style={styles.recentMarbles}>
       
      {marblesList}
-      
-
-
-     
+       
       </View>
       </View>
+      </ScrollView>
       </ScrollView>
       <TouchableOpacity style={styles.logOut} onPress={() => this.signOut()}>
         <Text style={styles.logoutText}>Log out</Text>
