@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { LogBox, ScrollView, TouchableOpacity, StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
+import Profile from './profile';
 import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 
@@ -11,6 +12,10 @@ export default class Dashboard extends Component {
       this.props.navigation.navigate('Login')
     })
     .catch(error => this.setState({ errorMessage: error.message }))
+  }
+
+  profilePage = () => {
+      this.props.navigation.navigate('Profile')
   }
 
 constructor(props) {

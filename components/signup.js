@@ -11,6 +11,7 @@ export default class Signup extends Component {
       displayName: '',
       email: '',
       password: '',
+      photoURL: '',
       isLoading: false
     }
   }
@@ -33,7 +34,8 @@ export default class Signup extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
         res.user.updateProfile({
-          displayName: this.state.displayName
+          displayName: this.state.displayName,
+          photoURL: "https://www.aperio-intelligence.com/wp-content/themes/aperio/img/blank-avatar.png"
         })
         console.log('User registered successfully!')
         this.setState({
