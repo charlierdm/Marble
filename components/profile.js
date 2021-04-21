@@ -90,19 +90,19 @@ export default class Profile extends Component {
         <TouchableOpacity
             style={styles.button}
             onPress={() => this.signOut()}>
-            <Text>Logout</Text>
+            <Text style={styles.buttontext}>Logout</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
             style={styles.button}
             onPress={() => this.passCombine()}>
-            <Text>Reset Password</Text>
+            <Text style={styles.buttontext}>Reset Password</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
             style={styles.button}
             onPress={() => this.twoOptionDeleteHandler()}>
-            <Text>Delete Account</Text>
+            <Text style={styles.buttontext}>Delete Account</Text>
         </TouchableOpacity>
 
     </View>
@@ -117,6 +117,7 @@ container: {
   flex: 1,
   alignItems: 'center',
   backgroundColor: '#fff',
+  paddingTop: 20
 },
 title: {
   fontSize: 30,
@@ -125,29 +126,50 @@ title: {
 },
 text: {
   fontSize: 20,
-  color: '#465c4f',
-  fontWeight: 'bold',
-  marginTop: 10,
-  marginBottom: 10
+  color: '#638270',
+  fontFamily: 'Lato_400Regular',
+  marginTop: 5,
+  marginBottom: 5,
 },
 button: {
-  backgroundColor: '#FAF5F0',
-  width: 150,
+  borderRadius: 20,
+  backgroundColor: '#82A993',
+  width: 300,
   padding: 10,
   marginTop: 20,
   alignItems: 'center',
-  color: '#465c4f'
+  color: '#FAF5F0',
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+  elevation: 3,
 },
 nameanduser: {
   backgroundColor: '#FAF5F0',
   alignItems: 'center',
   width: 300,
-  borderRadius: 20
+  borderRadius: 20,
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+  elevation: 3,
 },
 profilePic: {
   width: 110,
   height: 110,
   marginTop: 30,
   marginBottom: 40
+},
+buttontext: {
+  color: '#fff',
+  alignSelf: 'center'
 }
 });
