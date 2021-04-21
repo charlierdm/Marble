@@ -44,15 +44,12 @@ export default class Profile extends Component {
 
   passCombine = () => {
     this.passFlash()
-    // this.passReset()
+    this.passReset()
   }
 
   twoOptionDeleteHandler = () => {
-    //function to make two option alert
     Alert.alert(
-      //title
       'Delete Account',
-      //body
       'Are you sure?',
       [
         {
