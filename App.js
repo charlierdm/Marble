@@ -56,7 +56,7 @@ function MyStack() {
                 onPress={() => navigation.navigate('Profile') }
               title="Profile"
               color="#666"
-            /> : null)})}
+            />)})}
       />
       <Stack.Screen
         name="Profile"
