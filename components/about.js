@@ -34,11 +34,22 @@ export default class About extends Component {
             <View style={styles.imageContainer}>
             <Image style={styles.exampleImage} source={require('../assets/Images/sushimarble.png')}/>
             </View>
-            
             <Text style={styles.text}>
-            Marble delivers visual and audio feedback to provide a sense of reward to help reinforce the positive steps you wish to take in your life. We at marble hope this helps you in achieving your long-term goals and improving your savings.{'\n\n'}
+            Marble delivers visual and audio feedback to provide a sense of reward to help reinforce the positive steps you wish to take in your life. We at marble hope this helps you in achieving your long-term goals and improving your savings.{''}</Text>
+						<LottieView
+						autoPlay={true}
+						loop={true}
+						ref={animation => {
+              this.add_marble_animation = animation;
+            }}
+						style={{
+							alignSelf: 'center',
+							width: 175
+						}}
+            source={require('../assets/animations/add-marble-gold.json')}
+          	/>
+						<Text style={styles.text}> {'\n'}
             In reducing your consumerism, you are contributing to a greener society that is not so focused on acquiring the next thing. Instead, you will develop mindfulness of the actions you take, save the planets resources and improve your finances for a brighter future.{'\n\n'}</Text>
-
        
        </ScrollView>
       </View>
