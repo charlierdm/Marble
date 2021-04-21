@@ -25,6 +25,7 @@
     "react-audio-player": "^0.17.0",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native-flash-message": "^0.1.23",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-play-sound": "^1.0.24",
     "react-native-reanimated": "^2.1.0",
