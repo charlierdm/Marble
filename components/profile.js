@@ -1,6 +1,10 @@
 import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import firebase from '../database/firebase';
+import Marble from './Marble'
+import Dashboard from './dashboard'
+import FlashMessage from "react-native-flash-message";
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 export default class Profile extends Component {
 
@@ -17,6 +21,27 @@ export default class Profile extends Component {
       this.props.navigation.navigate('Login')
     })
     .catch(error => this.setState({ errorMessage: error.message }))
+  }
+
+  passReset = () => {
+    var useremail = firebase.auth().currentUser.email;
+    firebase.auth().sendPasswordResetEmail(useremail).then(function() {
+      console.log("Reset Email Sent")
+    }).catch(function(error) {
+      console.log("Error in sending reset, please try or contact developer")
+    });
+  }
+
+  passFlash = () => {
+    showMessage({
+          message: "Password Reset Email Sent!",
+          type: "success",
+        });
+  }
+
+  passCombine = () => {
+    this.passFlash()
+    this.passReset()
   }
 
   constructor(props) {
@@ -46,11 +71,18 @@ export default class Profile extends Component {
 
         <Button
             color="#3740FE"
+            title="Reset Password"
+            onPress={() => this.passCombine()}
+          />
+
+        <Button
+            color="#3740FE"
             title="Delete Account"
             onPress={() => this.userDelete()}
           />
 
     </View>
+    <FlashMessage position="top" />
     </KeyboardAvoidingView>
   );
 }

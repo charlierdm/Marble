@@ -14,10 +14,6 @@ export default class Dashboard extends Component {
     .catch(error => this.setState({ errorMessage: error.message }))
   }
 
-  profilePage = () => {
-      this.props.navigation.navigate('Profile')
-  }
-
 constructor(props) {
   super(props);
   this.dbRef = firebase.firestore().collection('marbles');
@@ -26,7 +22,7 @@ constructor(props) {
     activity: '',
     marbles: [],
     uid: '',
-    isLoading: false, 
+    isLoading: false,
     email: '',
   }
 }
@@ -74,13 +70,14 @@ storeMarble() {
     marbles: this.state.marbles,
   }).then((res) => {
     this.setState({
-      isLoading: false,    
+      isLoading: false,
     });
   })
   this.add_marble_animation.play(20, 63);
 }
 
 render() {
+
   const { marbles } = this.state;
   let recentHeading = ""
   marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = "" //render heading depends on marbles count
@@ -90,7 +87,7 @@ render() {
     behavior="height">
       <ScrollView>
     <View style={styles.container}>
-			
+
 
 			<LottieView
             autoPlay={false}
