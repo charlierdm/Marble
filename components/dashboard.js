@@ -17,10 +17,6 @@ export default class Dashboard extends Component {
     .catch(error => this.setState({ errorMessage: error.message }))
   }
 
-  profilePage = () => {
-      this.props.navigation.navigate('Profile')
-  }
-
 constructor(props) {
   super(props);
   this.dbRef = firebase.firestore().collection('marbles');
@@ -29,7 +25,7 @@ constructor(props) {
     activity: '',
     marbles: [],
     uid: '',
-    isLoading: false, 
+    isLoading: false,
     email: '',
   }
 }
@@ -92,7 +88,7 @@ storeMarble() {
     marbles: this.state.marbles,
   }).then((res) => {
     this.setState({
-      isLoading: false,    
+      isLoading: false,
     });
   })
   this.add_marble_animation.play(20, 63);
@@ -101,6 +97,7 @@ storeMarble() {
 
 
 render() {
+
   const { marbles } = this.state;
   let recentHeading = ""
   let marblesList = ""
@@ -130,7 +127,7 @@ render() {
       <ScrollView horizontal={false}>
       <ScrollView horizontal={true}>
     <View style={styles.container}>
-			
+
 
 			<LottieView
             autoPlay={false}
@@ -149,13 +146,10 @@ render() {
      {marblesList}
        
       </View>
-      </View>
+
+    </View>
+    </ScrollView>
       </ScrollView>
-      </ScrollView>
-      <TouchableOpacity style={styles.logOut} onPress={() => this.signOut()}>
-        <Text style={styles.logoutText}>Log out</Text>
-      </TouchableOpacity>
-    
     </KeyboardAvoidingView>
   );
 }

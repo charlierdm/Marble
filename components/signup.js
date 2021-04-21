@@ -37,7 +37,7 @@ export default class Signup extends Component {
       .then((res) => {
         res.user.updateProfile({
           displayName: this.state.displayName,
-          photoURL: "https://www.aperio-intelligence.com/wp-content/themes/aperio/img/blank-avatar.png"
+          photoURL: "https://cdn.shopify.com/s/files/1/1098/6962/products/Lustered-Cats-eye.jpg?v=1497976851"
         })
         console.log('User registered successfully!')
         this.setState({
@@ -57,13 +57,7 @@ export default class Signup extends Component {
           this.props.navigation.navigate('HomeScreen')
         })
       })
-      .catch((error => {this.setState({ errorMessage: error.message });
-      this.setState({
-        isLoading: false,
-      })
-      Alert.alert(this.state.errorMessage);
-      this.props.navigation.navigate('Signup')
-    }))
+      .catch(error => this.setState({ errorMessage: error.message }))
     }
   }
 
@@ -98,7 +92,7 @@ export default class Signup extends Component {
           secureTextEntry={true}
         />
         <Button
-          color="#82A993"
+          color="#3740FE"
           title="Signup"
           onPress={() => this.registerUser()}
         />
@@ -131,7 +125,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#567061',
+    color: '#3740FE',
     marginTop: 25,
     textAlign: 'center'
   },
