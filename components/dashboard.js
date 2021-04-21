@@ -112,11 +112,6 @@ render() {
        contentContainerStyle={{ paddingBottom: 20 }}
       />
       </View>
-      <Button
-          color="#3740FE"
-          title="Logout"
-          onPress={() => this.signOut()}
-        />
     </View>
     </ScrollView>
     </KeyboardAvoidingView>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, Button } from 'react-native';
+import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MarbleInput from './components/MarbleInput';
@@ -52,11 +52,12 @@ function MyStack() {
         options={({navigation}) => (
           {title: 'Dashboard'},
           {headerRight: () => (
-            <Button
-                onPress={() => navigation.navigate('Profile') }
-              title="Profile"
-              color="#666"
-            />)})}
+
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Image style={styles.imagestyle} source={require('./assets/profile.png')} />
+            </TouchableOpacity>
+
+          )})}
       />
       <Stack.Screen
         name="Profile"
@@ -77,3 +78,11 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+imagestyle: {
+  width: 30,
+  height: 30,
+  marginRight: 20,
+}
+});

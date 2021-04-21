@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, KeyboardAvoidingView, Image, FlatList } from 'react-native';
 import firebase from '../database/firebase';
 import Marble from './Marble'
 import Dashboard from './dashboard'
@@ -34,14 +34,17 @@ export default class Profile extends Component {
 
   passFlash = () => {
     showMessage({
-          message: "Password Reset Email Sent!",
-          type: "success",
+          //dont judge me..
+          message: "                      Password Reset Email Sent!",
+          type: "default",
+          backgroundColor: '#82A993',
+          textAlign: 'center'
         });
   }
 
   passCombine = () => {
     this.passFlash()
-    this.passReset()
+    // this.passReset()
   }
 
   constructor(props) {
@@ -60,26 +63,29 @@ export default class Profile extends Component {
     behavior="height">
     <View style={styles.container}>
       <Image style={styles.profilePic} source={{uri: user.photoURL}}/>
+
+      <View style ={styles.nameanduser}>
       <Text style={styles.text}>{user.displayName}</Text>
       <Text style={styles.text}>{user.email}</Text>
+      </View>
 
-      <Button
-          color="#3740FE"
-          title="Logout"
-          onPress={() => this.signOut()}
-        />
+        <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.signOut()}>
+            <Text>Logout</Text>
+        </TouchableOpacity>
 
-        <Button
-            color="#3740FE"
-            title="Reset Password"
-            onPress={() => this.passCombine()}
-          />
-
-        <Button
-            color="#3740FE"
-            title="Delete Account"
-            onPress={() => this.userDelete()}
-          />
+        <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.passCombine()}>
+            <Text>Reset Password</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.userDelete()}>
+            <Text>Delete Account</Text>
+        </TouchableOpacity>
 
     </View>
     <FlashMessage position="top" />
@@ -92,7 +98,7 @@ const styles = StyleSheet.create({
 container: {
   flex: 1,
   alignItems: 'center',
-  backgroundColor: '#e6fffa',
+  backgroundColor: '#fff',
 },
 title: {
   fontSize: 30,
@@ -101,10 +107,29 @@ title: {
 },
 text: {
   fontSize: 20,
+  color: '#465c4f',
+  fontWeight: 'bold',
+  marginTop: 10,
+  marginBottom: 10
+},
+button: {
+  backgroundColor: '#FAF5F0',
+  width: 150,
+  padding: 10,
+  marginTop: 20,
+  alignItems: 'center',
+  color: '#465c4f'
+},
+nameanduser: {
+  backgroundColor: '#FAF5F0',
+  alignItems: 'center',
+  width: 300,
+  borderRadius: 20
 },
 profilePic: {
-  width: 80,
+  width: 110,
   height: 110,
-  marginTop: 30
+  marginTop: 30,
+  marginBottom: 40
 }
 });
