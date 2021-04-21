@@ -2,21 +2,24 @@ import React from 'react';
 import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+
 import MarbleInput from './components/MarbleInput';
 import Marble from './components/Marble';
 import Login from './components/login';
 import Signup from './components/signup';
 import HomeScreen from './components/homeScreen';
+
 import Profile from './components/profile';
 
 
 import firebase from './database/firebase';
 
-import HomeScreen from './components/homeScreen';
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { 
   useFonts, Courgette_400Regular 
 } from '@expo-google-fonts/courgette';
+import { Lato_400Regular } from '@expo-google-fonts/lato';
 
 
 const Stack = createStackNavigator();
@@ -40,8 +43,8 @@ function MyStack() {
         },
         headerTintColor: '#82A993',
         headerTitleStyle: {
-          fontWeight: '300',
-          fontSize: 24
+          fontSize: 40,
+					fontFamily: 'Courgette_400Regular'
         },
         headerTransparent: false,
 
@@ -85,13 +88,21 @@ function MyStack() {
 }
 
 export default function App() {
+	let [fontsLoaded] = useFonts({
+    Courgette_400Regular, Lato_400Regular 
+  });
 
-  return (
-    <NavigationContainer>
-      <MyStack/>
-    </NavigationContainer>
-  );
-  
+
+	if (!fontsLoaded) {
+		return <AppLoading />;
+	} else {
+		return (
+			<NavigationContainer>
+				<MyStack />
+			</NavigationContainer>
+		);
+	}
+
 }
 
 const styles = StyleSheet.create({
