@@ -9,7 +9,7 @@ import Signup from './components/signup';
 // import Dashboard from './components/dashboard'
 import Profile from './components/profile';
 import HomeScreen from './components/homeScreen';
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { 
   useFonts, Courgette_400Regular 
 } from '@expo-google-fonts/courgette';
