@@ -33,7 +33,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-play-sound": "^1.0.24",
     "react-native-reanimated": "^2.1.0",
-    "react-native-safe-area-context": "^3.2.0",
+    "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "^3.1.1",
     "react-native-sound": "^0.11.0",
     "react-native-sound-player": "^0.10.8",

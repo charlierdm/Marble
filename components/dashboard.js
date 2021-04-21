@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList, TouchableOpacity, Alert } from 'react-native';
+import { LogBox, ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList, TouchableOpacity, Alert } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
 import firebase from '../database/firebase'
@@ -28,7 +28,7 @@ constructor(props) {
 }
 async componentDidMount() {
 
-
+  LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   const user = firebase.auth().currentUser
   const dbRef = this.dbRef.doc(user.email)
   dbRef.get().then((res) => {
@@ -156,8 +156,9 @@ render() {
     <KeyboardAvoidingView
     style={styles.container}
     behavior="height">
+      
       <ScrollView horizontal={false}>
-      <ScrollView horizontal={true}>
+   
     <View style={styles.container}>
 
 
@@ -187,7 +188,8 @@ render() {
 
     </View>
     </ScrollView>
-      </ScrollView>
+    
+  
     </KeyboardAvoidingView>
   );
 }
