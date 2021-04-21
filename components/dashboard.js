@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList, TouchableOpacity } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
-import Profile from './profile';
 import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 import { Audio } from 'expo-av';
@@ -75,8 +74,26 @@ handleAddMarble = (activity, cost) => {
   this.storeMarble();
   })
 }
-
-
+handleEmpty = () => {
+  this.setState({jarValue: 0})
+  this.setState({activity: ""});
+  this.setState({ marbles: [] }, function() {
+  this.deleteMarbles();
+  })
+}
+deleteMarbles = () => {
+  const user = firebase.auth().currentUser
+  this.setState({isLoading: true,});
+  this.dbRef.doc(user.email).set({
+    uid: user.email,
+    marbleValue: 0,
+    marbles: [],
+  }).then((res) => {
+    this.setState({
+      isLoading: false,
+    });
+  })
+}
 storeMarble() {
   const user = firebase.auth().currentUser
   this.setState({isLoading: true,});
@@ -92,7 +109,6 @@ storeMarble() {
   this.add_marble_animation.play(20, 63);
   this.playSound()
 }
-
 
 render() {
 
@@ -140,10 +156,16 @@ render() {
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
      <View style={styles.recentMarbles}>
-      
-     {marblesList}
-       
-      </View>
+      {marblesList}
+     </View>
+     
+     <View style={styles.buttoncontainer}>
+     <TouchableOpacity 
+     style={styles.button}
+     onPress={this.handleEmpty}
+     >
+       <Text style={styles.buttontext}>Empty Jar</Text></TouchableOpacity>
+     </View>    
 
     </View>
     </ScrollView>
@@ -182,20 +204,28 @@ recentMarblesHeading: {
   fontWeight: 'bold'
 },
 button: {
-  backgroundColor: '#FAF5F0',
-  width: 700,
+  borderRadius: 20,
+  backgroundColor: '#82A993',
+  width: 100,
   padding: 10,
   marginTop: 10,
-  alignItems: 'center',
-},
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+  elevation: 3,
+  },
 text: {
   color: '#465c4f',
   fontWeight: 'bold'
 },
 recentMarbles: {
   flex: 1,
-  marginBottom: 50,
-  marginTop: 10,
+  marginBottom: 10,
+  marginTop: 5,
   paddingTop: 10,
   backgroundColor: '#fffafa',
   borderRadius: 20,
@@ -235,5 +265,14 @@ logoutText: {
 },
 value: {
   fontSize: 22
+},
+buttoncontainer: {
+  alignItems: 'center',
+  marginLeft: 10,
+  paddingBottom: 30
+},
+buttontext: {
+  color: '#fff',
+  alignSelf: 'center'
 }
 });

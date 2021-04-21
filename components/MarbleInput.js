@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 5,
     width: 300,
+    marginBottom: 10
   },
   addText: {
     color: '#fff',
