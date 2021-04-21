@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { LogBox, ScrollView, TouchableOpacity, StyleSheet, View, Text, Button, KeyboardAvoidingView, Image, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
 import Profile from './profile';
 import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 import { Audio } from 'expo-av';
-
-
 
 export default class Dashboard extends Component {
   signOut = () => {

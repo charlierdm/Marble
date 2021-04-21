@@ -1,20 +1,11 @@
 import React from 'react';
-import { FlatList, KeyboardAvoidingView, Image, StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-
-import MarbleInput from './components/MarbleInput';
-import Marble from './components/Marble';
 import Login from './components/login';
 import Signup from './components/signup';
 import HomeScreen from './components/homeScreen';
-
 import Profile from './components/profile';
-
-
-import firebase from './database/firebase';
-
 import AppLoading from "expo-app-loading";
 import { 
   useFonts, Courgette_400Regular 
@@ -23,10 +14,6 @@ import { Lato_400Regular } from '@expo-google-fonts/lato';
 
 
 const Stack = createStackNavigator();
-
-const customFonts = {
-  Courgette: require("./assets/fonts/Courgette-Regular.ttf"),
-};
 
 function MyStack() {
 
