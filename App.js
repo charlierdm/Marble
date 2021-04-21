@@ -6,9 +6,9 @@ import MarbleInput from './components/MarbleInput';
 import Marble from './components/Marble';
 import Login from './components/login';
 import Signup from './components/signup';
-// import Dashboard from './components/dashboard'
+//import Dashboard from './components/dashboard'
 import Profile from './components/profile';
-import HomeScreen from './components/homeScreen';
+
 import firebase from './database/firebase';
 
 const Stack = createStackNavigator();
@@ -33,9 +33,10 @@ function MyStack() {
         headerRight: () => (
           loggedIn ?
             <Button
-                onPress={() => navigation.navigate('Profile')}
-              title="Info"
-              color="#fff"
+            //How can this be fixed to link up?
+                onPress={() => Dashboard.profilePage() }
+              title="Profile"
+              color="#666"
             /> : null),
         headerTitleAlign: 'center',
         headerStyle: {
