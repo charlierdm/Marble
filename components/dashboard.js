@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, KeyboardAvoidingView, FlatList, TouchableOpacity, Alert } from 'react-native';
 import MarbleInput from './MarbleInput'
 import Marble from './Marble'
 import firebase from '../database/firebase'
@@ -28,7 +28,7 @@ constructor(props) {
 }
 async componentDidMount() {
 
-  
+
   const user = firebase.auth().currentUser
   const dbRef = this.dbRef.doc(user.email)
   dbRef.get().then((res) => {
@@ -56,7 +56,7 @@ async componentDidMount() {
 playSound() {
   this.sound.setPositionAsync(0)
   this.sound.playAsync();
-  
+
 }
 
 getCurrentDate = () => {
@@ -110,6 +110,24 @@ storeMarble() {
   this.playSound()
 }
 
+twoOptionDeleteHandler = () => {
+  Alert.alert(
+    'Empty Jar',
+    'Are you sure?',
+    [
+      {
+        text: 'Yes',
+        onPress: () => this.handleEmpty()
+      },
+      {
+        text: 'No',
+        onPress: () => console.log('No Pressed'), style: 'cancel'
+      },
+    ],
+    {cancelable: false},
+  );
+};
+
 render() {
 
   const { marbles } = this.state;
@@ -120,7 +138,7 @@ render() {
   if (marbles.length === 0) {
     marblesList = <Text style={styles.noMarbles}>You don't have any marbles yet. Go and add one!</Text>;
   } else {
-    marblesList = 
+    marblesList =
 
     <FlatList
     data={marbles.slice().reverse()}
@@ -133,7 +151,7 @@ render() {
      contentContainerStyle={{ paddingBottom: 20 }}
     />
   }
-  
+
   return (
     <KeyboardAvoidingView
     style={styles.container}
@@ -158,14 +176,14 @@ render() {
      <View style={styles.recentMarbles}>
       {marblesList}
      </View>
-     
+
      <View style={styles.buttoncontainer}>
-     <TouchableOpacity 
+     <TouchableOpacity
      style={styles.button}
-     onPress={this.handleEmpty}
+     onPress={this.twoOptionDeleteHandler}
      >
        <Text style={styles.buttontext}>Empty Jar</Text></TouchableOpacity>
-     </View>    
+     </View>
 
     </View>
     </ScrollView>
