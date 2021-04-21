@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert, Keyboard, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 
+
 export default class MarbleInput extends React.Component {
   constructor(props) {
     super(props);
@@ -23,21 +24,19 @@ export default class MarbleInput extends React.Component {
     const { activity } = this.state;
     const { cost } = this.state;
 
-    if(!this.numbersOnly(this.state.cost)) {
-      Alert.alert('Please enter numbers for the value!')
-    } else {
     if (!activity || !cost) return;
     onSubmit(activity, cost);
     this.setState({activity: ''});
     this.setState({cost: ''});
     Keyboard.dismiss();
-    }
   }
   render() {
     const { activity } = this.state;
     const { cost } = this.state;
+
     return (
       <View style={styles.container}>
+
       <TextInput
         style={styles.textInput}
         autoCorrect={false}
@@ -46,6 +45,7 @@ export default class MarbleInput extends React.Component {
         value={activity}
         onChangeText={this.handleChangeActivity}
       />
+
       <TextInput
         style={styles.valueInput}
         autoCorrect={false}
@@ -70,13 +70,20 @@ export default class MarbleInput extends React.Component {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
-    backgroundColor: 'powderblue',
+    backgroundColor: '#82A993',
     width: 100,
     padding: 10,
     marginTop: 10,
+    shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 1,
+  },
+  shadowOpacity: 0.22,
+  shadowRadius: 2.22,
+  elevation: 3,
   },
   container: { 
-    marginTop: 10,
     alignItems: 'center',
     marginLeft: 10,
   },

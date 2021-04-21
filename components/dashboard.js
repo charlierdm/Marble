@@ -5,6 +5,9 @@ import Marble from './Marble'
 import Profile from './profile';
 import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
+import { Audio } from 'expo-av';
+
+
 
 export default class Dashboard extends Component {
   signOut = () => {
@@ -26,9 +29,9 @@ constructor(props) {
     email: '',
   }
 }
-componentDidMount() {
+async componentDidMount() {
 
-  LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  
   const user = firebase.auth().currentUser
   const dbRef = this.dbRef.doc(user.email)
   dbRef.get().then((res) => {
@@ -45,7 +48,20 @@ componentDidMount() {
     }
   });
 
+  this.sound = new Audio.Sound();
+
+  const status = {
+    shouldPlay: false
+  };
+  this.sound.loadAsync(require('../assets/sounds/marble_sound.wav'), status, false)
 }
+
+playSound() {
+  this.sound.setPositionAsync(0)
+  this.sound.playAsync();
+  
+}
+
 getCurrentDate = () => {
   var date = new Date().getDate();
   var month = new Date().getMonth() + 1;
@@ -61,6 +77,8 @@ handleAddMarble = (activity, cost) => {
   this.storeMarble();
   })
 }
+
+
 storeMarble() {
   const user = firebase.auth().currentUser
   this.setState({isLoading: true,});
@@ -74,18 +92,40 @@ storeMarble() {
     });
   })
   this.add_marble_animation.play(20, 63);
+  this.playSound()
 }
+
 
 render() {
 
   const { marbles } = this.state;
   let recentHeading = ""
+  let marblesList = ""
   marbles.length > 0 ? recentHeading = "Recent Marbles" : recentHeading = "" //render heading depends on marbles count
+
+  if (marbles.length === 0) {
+    marblesList = <Text style={styles.noMarbles}>You don't have any marbles yet. Go and add one!</Text>;
+  } else {
+    marblesList = 
+
+    <FlatList
+    data={marbles.slice().reverse()}
+    horizontal={false}
+    extraData={this.state.refresh}
+    renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
+    keyExtractor={(item, index) => {
+      return  index.toString();
+     }}
+     contentContainerStyle={{ paddingBottom: 20 }}
+    />
+  }
+  
   return (
     <KeyboardAvoidingView
     style={styles.container}
     behavior="height">
-      <ScrollView>
+      <ScrollView horizontal={false}>
+      <ScrollView horizontal={true}>
     <View style={styles.container}>
 
 
@@ -98,22 +138,18 @@ render() {
 						style={styles.jar}
             source={require('../assets/animations/add-marble-gold.json')}
           />
-      <Text style={styles.jarValue}>Jar Value: £ {(this.state.jarValue).toFixed(2)}</Text>
+      <Text style={styles.jarValue}> £ <Text style={styles.value}>{(this.state.jarValue).toFixed(2)}</Text></Text>
       <MarbleInput onSubmit={this.handleAddMarble}/>
       <Text style={styles.recentMarblesHeading}>{recentHeading}</Text>
      <View style={styles.recentMarbles}>
-
-      <FlatList
-      data={marbles.slice().reverse()}
-      renderItem={({item}) => <Marble date = {item.date} activity={item.activity} cost={item.cost} />}
-      keyExtractor={(item, index) => {
-        return  index.toString();
-       }}
-       contentContainerStyle={{ paddingBottom: 20 }}
-      />
+      
+     {marblesList}
+       
       </View>
+
     </View>
     </ScrollView>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
@@ -155,13 +191,14 @@ button: {
   alignItems: 'center',
 },
 text: {
-  color: '#567061',
+  color: '#465c4f',
   fontWeight: 'bold'
 },
 recentMarbles: {
   flex: 1,
-  marginBottom: 10,
+  marginBottom: 50,
   marginTop: 10,
+  paddingTop: 10,
   backgroundColor: '#fffafa',
   borderRadius: 20,
   width: 350,
@@ -173,7 +210,33 @@ recentMarbles: {
   },
   shadowOpacity: 0.22,
   shadowRadius: 2.22,
+  
   elevation: 3,
-  padding: 10
+},
+noMarbles: {
+  color: '#82A993',
+  fontWeight: 'bold',
+  paddingTop: 0,
+  paddingLeft: 20,
+  paddingBottom: 10
+},
+logOut: {
+  flex: 1,
+  backgroundColor: '#FAF5F0',
+  width: 700,
+  flex: 1,
+    justifyContent: 'flex-end',
+  position: 'absolute',
+  bottom: 0,
+  paddingBottom: 10
+},
+logoutText: {
+  textAlign: 'center',
+  paddingTop: 5,
+  color: '#82A993',
+  fontWeight: 'bold'
+},
+value: {
+  fontSize: 22
 }
 });
