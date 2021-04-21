@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, KeyboardAvoidingView, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, KeyboardAvoidingView, Image, FlatList, Alert } from 'react-native';
 import firebase from '../database/firebase';
 import Marble from './Marble'
 import Dashboard from './dashboard'
@@ -47,6 +47,27 @@ export default class Profile extends Component {
     // this.passReset()
   }
 
+  twoOptionDeleteHandler = () => {
+    //function to make two option alert
+    Alert.alert(
+      //title
+      'Delete Account',
+      //body
+      'Are you sure?',
+      [
+        {
+          text: 'Yes',
+          onPress: () => this.userDelete()
+        },
+        {
+          text: 'No',
+          onPress: () => console.log('No Pressed'), style: 'cancel'
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -80,10 +101,10 @@ export default class Profile extends Component {
             onPress={() => this.passCombine()}>
             <Text>Reset Password</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
             style={styles.button}
-            onPress={() => this.userDelete()}>
+            onPress={() => this.twoOptionDeleteHandler()}>
             <Text>Delete Account</Text>
         </TouchableOpacity>
 
