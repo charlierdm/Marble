@@ -37,7 +37,8 @@ function MyStack() {
         headerTintColor: '#82A993',
         headerTitleStyle: {
           fontWeight: '300',
-          fontSize: 24
+          fontSize: 24,
+					fontFamily: 'Courgette_400Regular'
         },
         headerTransparent: false,
 
@@ -75,11 +76,17 @@ function MyStack() {
 }
 
 export default function App() {
+	let [fontsLoaded] = useFonts({
+    Courgette_400Regular,
+  });
 
-  return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
-  );
-  
+	if (!fontsLoaded) {
+		return <AppLoading />;
+	} else {
+		return (
+			<NavigationContainer>
+				<MyStack />
+			</NavigationContainer>
+		);
+	}
 }
