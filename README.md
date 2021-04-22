@@ -58,6 +58,10 @@ We decided on Firebase as a lightweight cloud solution for our back end. We like
 
 We utilised Lottie to convert the bespoke Jar animation into a JSON file, this is then rendered within React Native. Again, this was a new technology to us.
 
+<img width="300" height="300" alt="Screenshot 2021-04-22 at 12 57 15" src="https://preview.redd.it/meg6nawssnb01.jpg?auto=webp&s=40df33d5a7d4456bf08f68785f2514a97d310d07">
+
+The audio for the animation was created in Ableton Live and rendered using the Expo AV API within React Native.
+
 ## App Progression
 
 Below you can see the various iterations that Marble went through; from early mock ups, the MVP, to the final version.
