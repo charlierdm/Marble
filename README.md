@@ -16,7 +16,7 @@ The <strong>idea</strong> behing Marble is to assist the user in forming, and st
 
 The <strong>goal</strong> of Marble is to reduce the users consumption, enabling them to save for their future and to help promote a society that is more conscientious about how it spends and uses it's resources.
 
-<strong>Here are some reasons, courtesy of author James Clear as to why habit visualisation works so well.</strong>
+<strong>Here are some reasons, courtesy of author James Clear as to why habit visualisation works so well.
 
 - Visual cues remind you to start a behavior
 
@@ -24,17 +24,29 @@ The <strong>goal</strong> of Marble is to reduce the users consumption, enabling
 
 * Visual cues can have an additive effect on motivation
 
-* Visual cues can be used to drive short-term and long-term motivation
+* Visual cues can be used to drive short-term and long-term motivation</strong>
 
 ## Team Values
 
 At the very beginning of this project, we discussed a set of team values to stick to throughout, these were primarily to make sure that everyone is listened to and to make sure we are in understanding of one another as best possible. They are as follows:
 
-- Daily emotional check ins.
+- <strong>Daily emotional check ins.
 - Everyone is listened to and not spoken over.
 - Good listening through meetings.
 - Maintaining a safe environment to express feelings when needed to.
-- Daily reflections on what went well and what could be done better. As a team we tried to refine our process whilst learning a new framework; React Native.
+- Daily reflections on what went well and what could be done better. As a team we tried to refine our process whilst learning a new framework; React Native.</strong>
+
+## Tech Stack
+
+We all agreed early in the project we wanted to use new technologies to create our final project.
+
+<img width="500" alt="Screenshot 2021-04-22 at 12 57 15" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png">
+
+We decided on React Native as a front end framework to create a cross platform(iOS/Android) mobile application. We had heard a lot about it during our time at Makers and were all very excited to use it to create our app.
+
+<img width="500" alt="Screenshot 2021-04-22 at 12 57 15" src="https://1.bp.blogspot.com/-YIfQT6q8ZM4/Vzyq5z1B8HI/AAAAAAAAAAc/UmWSSMLKtKgtH7CACElUp12zXkrPK5UoACLcB/s1600/image00.png">
+
+We decided on Firebase as a lightweight cloud solution for our back end. We liked the idea of learning as much as possible within the scope of our project, so using an entirely new way of storing data seemed like a fun and challenging way to achieve this goal.
 
 <img width="1384" alt="Screenshot 2021-04-22 at 12 57 15" src="https://user-images.githubusercontent.com/75075773/115710538-5f8eff80-a36a-11eb-8e9c-213e36eb64cf.png">
 
