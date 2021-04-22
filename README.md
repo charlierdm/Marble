@@ -54,7 +54,7 @@ We decided on React Native as a front end framework to create a cross platform(i
 
 We decided on Firebase as a lightweight cloud solution for our back end. We liked the idea of learning as much as possible within the scope of our project, so using an entirely new way of storing data seemed like a fun and challenging way to achieve this goal.
 
-![1_hrJ760Gu8gTV9YpcaBsMsg](https://user-images.githubusercontent.com/75075773/115748663-4a2bcc80-a38e-11eb-8dc4-a524a5772933.png)
+<img width="500" alt="Screenshot 2021-04-22 at 12 57 15" src="https://drawer.design/wp-content/uploads/2020/03/everything-you-need-to-know-about-lottie.png">
 
 We utilised Lottie to convert the bespoke Jar animation into a JSON file, this is then rendered within React Native. Again, this was a new technology to us.
 
