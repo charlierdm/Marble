@@ -36,7 +36,7 @@ At the very beginning of this project, we discussed a set of team values to stic
 - Maintaining a safe environment to express feelings when needed to.
 - Daily reflections on what went well and what could be done better. As a team we tried to refine our process whilst learning a new framework; React Native.
 
-<img width="339" alt="Screenshot 2021-04-21 at 17 23 24" src="https://user-images.githubusercontent.com/75075773/115680976-fbf5d980-a34b-11eb-981e-c308fe14528f.png">
+<img width="1384" alt="Screenshot 2021-04-22 at 12 57 15" src="https://user-images.githubusercontent.com/75075773/115710538-5f8eff80-a36a-11eb-8e9c-213e36eb64cf.png">
 
 ## User Stories
 
@@ -89,6 +89,8 @@ As a User
 So that I can clear my Marbles history to start afresh
 I'd like to be able to empty my jar of all entries and savings.
 ```
+
+<img width="339" alt="Screenshot 2021-04-21 at 17 23 24" src="https://user-images.githubusercontent.com/75075773/115680976-fbf5d980-a34b-11eb-981e-c308fe14528f.png">
 
 ## Potential Additions
 
