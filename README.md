@@ -1,10 +1,12 @@
 # Marble
 
-![marazzi_grande_marble_look_4 jpg__1920x700_q75_crop_subsampling-2](https://user-images.githubusercontent.com/75075773/114753713-b0419f80-9d4f-11eb-844d-3e48915fb921.jpg)
+<img width="833" alt="Screenshot 2021-04-22 at 17 10 07" src="https://user-images.githubusercontent.com/75075773/115747964-a3dfc700-a38d-11eb-8362-20ebec417708.png">
 
 <strong><em>Marble is a savings app to help you visualise your invisible habits - it's designed to assist you in developing non-consumerist behaviour and in turn; support your long term saving goals.</em></strong>
 
 ## Philosophy
+
+![marazzi_grande_marble_look_4 jpg__1920x700_q75_crop_subsampling-2](https://user-images.githubusercontent.com/75075773/114753713-b0419f80-9d4f-11eb-844d-3e48915fb921.jpg)
 
 <strong><em>What is an invisible habit?</strong></em>
 
@@ -52,7 +54,15 @@ We decided on React Native as a front end framework to create a cross platform(i
 
 We decided on Firebase as a lightweight cloud solution for our back end. We liked the idea of learning as much as possible within the scope of our project, so using an entirely new way of storing data seemed like a fun and challenging way to achieve this goal.
 
-<img width="1384" alt="Screenshot 2021-04-22 at 12 57 15" src="https://user-images.githubusercontent.com/75075773/115710538-5f8eff80-a36a-11eb-8e9c-213e36eb64cf.png">
+![1_hrJ760Gu8gTV9YpcaBsMsg](https://user-images.githubusercontent.com/75075773/115748663-4a2bcc80-a38e-11eb-8dc4-a524a5772933.png)
+
+We utilised Lottie to convert the bespoke Jar animation into a JSON file, this is then rendered within React Native. Again, this was a new technology to us.
+
+## App Progression
+
+Below you can see the various iterations that Marble went through; from early mock ups, the MVP, to the final version.
+
+<img width="538" alt="Screenshot 2021-04-22 at 17 19 49" src="https://user-images.githubusercontent.com/75075773/115749396-f66db300-a38e-11eb-9e04-5f77d2d95d97.png">
 
 ## User Stories
 
@@ -106,14 +116,14 @@ So that I can clear my Marbles history to start afresh
 I'd like to be able to empty my jar of all entries and savings.
 ```
 
-<img width="339" alt="Screenshot 2021-04-21 at 17 23 24" src="https://user-images.githubusercontent.com/75075773/115680976-fbf5d980-a34b-11eb-981e-c308fe14528f.png">
+<img width="433" alt="Screenshot 2021-04-22 at 17 26 51" src="https://user-images.githubusercontent.com/75075773/115750305-f02c0680-a38f-11eb-888a-0eb5f3637414.png">
 
 ## Potential Additions
 
-- Stripe payment system for depositing and withdrawing savings
+- Stripe payment system for depositing and withdrawing savings.
 - Green charity donation suggestion/Charity API
-- Badge system for further reward
-- A shelf page for storing jars for multiple long term goals
+- Badge system for further rewards.
+- A shelf for storing jars for multiple long term goals
 
 ## Credits
 
