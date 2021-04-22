@@ -31,9 +31,13 @@ The <strong>goal</strong> of Marble is to reduce the users consumption, enabling
 At the very beginning of this project, we discussed a set of team values to stick to throughout, these were primarily to make sure that everyone is listened to and to make sure we are in understanding of one another as best possible. They are as follows:
 
 - <strong>Daily emotional check ins.
+
 - Everyone is listened to and not spoken over.
+
 - Good listening through meetings.
+
 - Maintaining a safe environment to express feelings when needed to.
+
 - Daily reflections on what went well and what could be done better. As a team we tried to refine our process whilst learning a new framework; React Native.</strong>
 
 ## Tech Stack
