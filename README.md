@@ -36,7 +36,7 @@ At the very beginning of this project, we discussed a set of team values to stic
 - Maintaining a safe environment to express feelings when needed to.
 - Daily reflections on what went well and what could be done better. As a team we tried to refine our process whilst learning a new framework; React Native.
 
-![Screenshot_20210419-200652_Expo Go (1)](https://user-images.githubusercontent.com/75075773/115293860-bff62500-a14f-11eb-987a-f68cfa946f73.jpg)
+<img width="339" alt="Screenshot 2021-04-21 at 17 23 24" src="https://user-images.githubusercontent.com/75075773/115680976-fbf5d980-a34b-11eb-981e-c308fe14528f.png">
 
 ## User Stories
 
@@ -44,8 +44,14 @@ At the very beginning of this project, we discussed a set of team values to stic
 
 ```
 As a User
-So that I can represent my consumerist habits,
-I'd like to assign a marble with an activity and an amount
+So that I can return to my savings pot
+I'd like to be able to log in and out of my Marble account
+```
+
+```
+As a User
+So that I can visualise my invisible habits,
+I'd like to make an entry to the app.
 ```
 
 ```
@@ -62,9 +68,34 @@ I'd like to see a home screen
 
 ```
 As a User
+So that I get a visual cue to enhance my habit formation
+I'd like to see an animation each time I enter a Marble.
+```
+
+```
+As a User
+So that I get an audio cue to enhance my habit formation
+I'd like to hear a pleasing sound each time I enter a Marble
+```
+
+```
+As a User
 So that I can keep track of my overall progress
 I'd like to see the total savings in my jar
 ```
+
+```
+As a User
+So that I can clear my Marbles history to start afresh
+I'd like to be able to empty my jar of all entries and savings.
+```
+
+## Potential Additions
+
+- Stripe payment system for depositing and withdrawing savings
+- Green charity donation suggestion/Charity API
+- Badge system for further reward
+- A shelf page for storing jars for multiple long term goals
 
 ## Credits
 
