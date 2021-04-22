@@ -14,7 +14,7 @@ An invisible habit is a habit that provides no immediate result or visual cue. N
 
 Choosing the healthier, <strong><em>better</strong></em>, or more cost effective option does not always provide visual feedback or a reward, thus making these habits harder to stick to over long periods of time.
 
-The <strong>idea</strong> behing Marble is to assist the user in forming, and sticking to their goals by creating a sensory reward for their <strong><em>'not doing'</strong></em> of various consumerist habits.
+The <strong>idea</strong> behind Marble is to assist the user in forming, and sticking to their goals by creating a sensory reward for their <strong><em>'not doing'</strong></em> of various consumerist habits.
 
 The <strong>goal</strong> of Marble is to reduce the users consumption, enabling them to save for their future and to help promote a society that is more conscientious about how it spends and uses it's resources.
 
@@ -38,7 +38,7 @@ At the very beginning of this project, we discussed a set of team values to stic
 
 - Good listening through meetings.
 
-- Maintaining a safe environment to express feelings when needed to.
+- Maintaining a safe environment to express feelings when needed.
 
 - Daily reflections on what went well and what could be done better. As a team we tried to refine our process whilst learning a new framework; React Native.</strong>
 
