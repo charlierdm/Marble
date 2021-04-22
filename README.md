@@ -6,7 +6,7 @@
 
 ## Philosophy
 
-![marazzi_grande_marble_look_4 jpg__1920x700_q75_crop_subsampling-2](https://user-images.githubusercontent.com/75075773/114753713-b0419f80-9d4f-11eb-844d-3e48915fb921.jpg)
+<img width="500" alt="Screenshot 2021-04-22 at 12 57 15" src="https://user-images.githubusercontent.com/75075773/115750910-91b35800-a390-11eb-91b3-58031081855b.gif">
 
 <strong><em>What is an invisible habit?</strong></em>
 
