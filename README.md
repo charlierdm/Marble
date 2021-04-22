@@ -68,6 +68,8 @@ Below you can see the various iterations that Marble went through; from early mo
 
 <img width="538" alt="Screenshot 2021-04-22 at 17 19 49" src="https://user-images.githubusercontent.com/75075773/115749396-f66db300-a38e-11eb-9e04-5f77d2d95d97.png">
 
+[Watch the demo video here](<https://github.com/anioji94/marble/blob/main/Marble%20_Expo%20Go%20(1).mp4>)
+
 ## User Stories
 
 <strong><em>A list of specifications we feel best meet the core concept of Marble:</em></strong>
