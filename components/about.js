@@ -6,7 +6,6 @@ import firebase from '../database/firebase'
 import LottieView from 'lottie-react-native';
 import AppLoading from "expo-app-loading";
 
-
 export default class About extends Component {
   constructor(props) {
     super(props)
